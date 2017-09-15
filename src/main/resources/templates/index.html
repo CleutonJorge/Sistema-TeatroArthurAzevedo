@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace= "layout/fragmentos-layout :: cabecalho" >
+
+</head>
+
+
+<body class="corBackBody">
+	
+  <header  th:replace="layout/fragmentos-layout :: barra-navegacao" ></header>
+	
+	<!-- conteúdo principal -->
+	<main class="container corBackMain">
+
+	<div class="row backgroundli">
+	
+<!-- 	<img data-th-src="@{/imagens/tituloPagina.png}" /> -->
+	
+<!-- 	<div class="col-sm-3"> -->
+<!-- 			<img src="/imagens/livros/book.net4.png" alt="Logo da Loja" -->
+<!-- 				class="img-responsive" /> -->
+<!-- 		</div> -->
+	
+<!--	<div class="categoria col-sm-3">
+<ul id="menu" ><h4>Categoria:</h4>
+<li><a href="#">Programacao</a></li>
+<li><a href="#">Redes de Computadores</a></li>
+<li><a href="#">Engenharia</a></li>
+<li><a href="#">Gestao</a></li>
+</ul>
+</div>-->
+
+		<!-- carousel -->
+		<div class="col-sm-12">
+			<div class="panel panel-default ">
+				<div class="panel-body">
+					<div id="carousel-example-generic" class="carousel slide" 
+						data-ride="carousel" >
+<!-- 						Indicators -->
+						<ol class="carousel-indicators">
+							<li data-target="#carousel-example-generic" data-slide-to="0"
+								class="active"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+							<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+						</ol>
+
+<!-- 						Wrapper for slides -->
+						<div class="carousel-inner padding-foto" role="listbox" >
+<!-- 							<div class="item " th:each="livro : ${livros}"> -->
+<!-- 							<div class = "tamanhoFoto"> -->
+<!-- 								<img class="img-reponsive tamanhoFoto" -->
+<!-- 									th:src="|/${livro.fotoPath}|" alt="..." /> -->
+<!-- 									</div> -->
+<!-- 								<div class="carousel-caption"> -->
+<!-- 									<h4>Descrição da foto</h4> -->
+<!-- 									<p th:text="${livro.descricao}">Lorem Ipsum é simplesmente uma simulação de texto da -->
+<!-- 										indústria tipográfica e de impressos, e vem sendo utilizado -->
+<!-- 										desde o século XVI</p> -->
+<!-- 								</div> -->
+<!-- 							</div> -->
+							<div class="item active">
+							<div class = "tamanhoFoto">
+								<img class="img-reponsive"
+									src="/imagens/tituloPagina.png" alt="..." height="400"/>
+									</div>
+								<div class="carousel-caption">
+									<h4>Descrição da foto</h4>
+									<p>Book.net e um site voltado para a venda e aluguel de livros diversos</p>
+								</div>
+							</div>	
+							<div class="item ">
+							<div class = "tamanhoFoto">
+								<img class="img-reponsive"
+									src="/imagens/tituloPagina.png" alt="..." height="400"/>
+									</div>
+								<div class="carousel-caption">
+									<h4>Descrição da foto</h4>
+									<p>Book.net e um site voltado para a venda e aluguel de livros diversos</p>
+								</div>
+							</div>	
+							<div class="item ">
+							<div class = "tamanhoFoto">
+								<img class="img-reponsive"
+									src="/imagens/tituloPagina.png" alt="..." height="400"/>
+									</div>
+								<div class="carousel-caption">
+									<h4>Descrição da foto</h4>
+									<p>Book.net e um site voltado para a venda e aluguel de livros diversos</p>
+								</div>
+							</div>	
+						</div>
+
+<!-- 						Controls -->
+						<a class="left carousel-control" href="#carousel-example-generic"
+							role="button" data-slide="prev"> <span
+							class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+							<span class="sr-only">Previous</span>
+						</a> <a class="right carousel-control"
+							href="#carousel-example-generic" role="button" data-slide="next">
+							<span class="glyphicon glyphicon-chevron-right"
+							aria-hidden="true"></span> <span class="sr-only">Next</span>
+						</a>
+					</div>
+				</div>
+			</div>
+<!-- 		carousel -->
+		</div>
+		<!-- col-xs-8 -->
+
+
+		
+		<!-- col-xs-4 -->
+	</div>
+	<!-- row -->
+	<hr />
+
+	<!-- principais seções do site -->
+
+	<!-- <section class="row">
+		<div class="col-sm-4">
+			<a href="#" class="thumbnail"> <img src="/imagens/bestseller.jpg"
+				alt="bestseller" />
+			</a>
+		</div>
+		<div class="col-sm-4">
+			<a href="#" class="thumbnail"> <img src="/imagens/promocoes.jpg"
+				alt="outlet" />
+			</a>
+		</div>
+		<div class="col-sm-4">
+			<a href="#" class="thumbnail"> <img src="/imagens/faqs.jpg"
+				alt="faqs" />
+			</a>
+		</div>
+
+	</section> -->
+
+	<!-- Mais Vendidos -->
+	<section class="row backgroundli ">
+		<div class="linha-horizontal " >
+			<span>Programacao</span>
+			<hr />
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback">
+		
+			 <img src="/imagens/livros/livrosIndex/programacao1.jpg" alt="" height="60px" class="tamanhoFoto"/>
+			
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/programacao2.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/programacao3.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/programacao4.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+<!-- 		<div class="col-sm-3"  th:each="livro : ${livros}" th:if="${{livro.igualdade(1)}}"> -->
+<!-- 			<a href="#" class="thumbnail tamanhoFoto tamanhoback"  > -->
+<!-- 			<figure> -->
+<!--  			 <img	th:src="|/${livro.fotoPath}|" alt="" class="tamanhoFoto"/> --> 
+<!-- <img th:if="${livro.temFotoCapa()== true}" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+								        
+<!-- 								  <img th:if="${livro.temFotoCapa() == false}" data-th-src="@{/imagens/img-livro-indisponivel.jpg}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+<!-- 			</figure> -->
+<!-- 			<ul> -->
+<!-- 			<li th:text="|Livro   ${livro.titulo}|"></li> -->
+<!-- 			<li th:text="|Venda   R$ ${livro.nossoPreco}|"></li> -->
+<!-- 			<li th:text="|Aluguel   R$ ${livro.nossoPrecoAluguel}|"></li> -->
+<!-- 			</ul> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
+		
+	</section>
+	<section class="row backgroundli">
+		<div class="linha-horizontal" >
+			<span>Redes de Computadores</span>
+			<hr />
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/redes1.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/redes2.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/redes3.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/redes4.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+<!-- 		<div class="col-sm-3"  th:each="livro : ${livros}" th:if="${{livro.igualdade(2)}}"> -->
+<!-- 			<a href="#" class="thumbnail tamanhoFoto tamanhoback"  > -->
+<!-- 			<figure> -->
+<!-- 			 <img	th:src="|/${livro.fotoPath}|" alt="" class="tamanhoFoto"/> -->
+<!-- <img th:if="${livro.temFotoCapa()== true}" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+								        
+<!-- 								  <img th:if="${livro.temFotoCapa() == false}" data-th-src="@{/imagens/img-livro-indisponivel.jpg}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+<!-- 			</figure> -->
+<!-- 			<ul> -->
+<!-- 			<li th:text="|Livro   ${livro.titulo}|"></li> -->
+<!-- 			<li th:text="|Venda   R$ ${livro.nossoPreco}|"></li> -->
+<!-- 			<li th:text="|Aluguel   R$ ${livro.nossoPrecoAluguel}|"></li> -->
+<!-- 			</ul> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
+		
+	</section>
+	<section class="row backgroundli">
+		<div class="linha-horizontal" >
+			<span>Engenharia</span>
+			<hr />
+		</div>
+		
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/engenharia1.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/engenharia2.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/engenharia3.png" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/engenharia4.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+<!-- 		<div class="col-sm-3"  th:each="livro : ${livros}" th:if="${{livro.igualdade(3)}}"> -->
+<!-- 			<a href="#" class="thumbnail tamanhoFoto tamanhoback"  > -->
+<!-- 			<figure> -->
+<!--  			 <img	th:src="|/${livro.fotoPath}|" alt="" class="tamanhoFoto"/> --> 
+<!-- <img th:if="${livro.temFotoCapa()== true}" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+								        
+<!-- 								  <img th:if="${livro.temFotoCapa() == false}" data-th-src="@{/imagens/img-livro-indisponivel.jpg}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+<!-- 			</figure> -->
+<!-- 			<ul> -->
+<!-- 			<li th:text="|Livro   ${livro.titulo}|"></li> -->
+<!-- 			<li th:text="|Venda   R$ ${livro.nossoPreco}|"></li> -->
+<!-- 			<li th:text="|Aluguel   R$ ${livro.nossoPrecoAluguel}|"></li> -->
+<!-- 			</ul> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
+		
+	</section>
+	<section class="row backgroundli">
+		<div class="linha-horizontal" >
+			<span>Gestao</span>
+			<hr />
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/gestao1.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/gestao2.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/gestao3.jpg" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+		<div class="col-sm-3 col-xs-6">
+			<a href="#" class="thumbnail tamanhoFoto tamanhoback"> <img
+				src="/imagens/livros/livrosIndex/gestao4.png" alt="" height="60px" class="tamanhoFoto"/>
+				<ul> 
+ 		         	<li th:text="|Livro   Logica de Programacao|"></li> 
+ 		         	<li th:text="|Venda   R$ 80.00|"></li> 
+		         	<li th:text="|Aluguel   R$ 5.00|"></li>
+		         	<button type="button" class="btn btn-primary">Comprar</button>
+                    <button type="button" class="btn btn-danger">Alugar</button>
+ 			   </ul>
+			</a>
+		</div>
+<!-- 		<div class="col-sm-3"  th:each="livro : ${livros}" th:if="${{livro.igualdade(4)}}"> -->
+<!-- 			<a href="#" class="thumbnail tamanhoFoto tamanhoback"  > -->
+<!-- 			<figure> -->
+<!--  			 <img	th:src="|/${livro.fotoPath}|" alt="" class="tamanhoFoto"/> --> 
+<!-- <img th:if="${livro.temFotoCapa()== true}" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+								        
+<!-- 								  <img th:if="${livro.temFotoCapa() == false}" data-th-src="@{/imagens/img-livro-indisponivel.jpg}"  -->
+<!-- 								        alt="Foto do Livro" height="60px" class="tamanhoFoto"/> -->
+<!-- 			</figure> -->
+<!-- 			<ul> -->
+<!-- 			<li th:text="|Livro   ${livro.titulo}|"></li> -->
+<!-- 			<li th:text="|Venda   R$ ${livro.nossoPreco}|"></li> -->
+<!-- 			<li th:text="|Aluguel   R$ ${livro.nossoPrecoAluguel}|"></li> -->
+<!-- 			</ul> -->
+<!-- 			</a> -->
+<!-- 		</div> -->
+		
+	</section>
+	</main>
+
+ <div th:replace="layout/fragmentos-layout :: scripts-js"></div>
+<!--  <span data-th-replace="layout/fragmentos-scripts :: bootstrap"></span> -->
+	
+</body>
+</html>

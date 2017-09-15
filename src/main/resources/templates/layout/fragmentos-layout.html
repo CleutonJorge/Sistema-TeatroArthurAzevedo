@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:fragment="cabecalho">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+<meta name="description" content="" />
+<meta name="author" content="" />
+
+<title>Book.net</title>
+
+<!-- Bootstrap core CSS -->
+<link rel="stylesheet" th:href="@{/bootstrap/css/bootstrap.min.css}" />
+
+
+<!-- Custom styles for this template -->
+<link rel="stylesheet" th:href="@{/css/home.css}" />
+
+<link rel="icon" th:href="@{/imagens/icone-bookstore.png}" />
+</head>
+
+<body>
+	<header th:fragment="barra-navegacao">
+
+		<!-- barra superior -->
+		<div class="topo-pagina" />
+		<!-- Static navbar -->
+		<nav class="navbar navbar-default navbar-inverse navbar-static-top">
+			<div class="container-fluid">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed"
+						data-toggle="collapse" data-target="#navbar" aria-expanded="false"
+						aria-controls="navbar">
+						<span class="sr-only">Toggle navigation</span> <span
+							class="icon-bar"></span> <span class="icon-bar"></span> <span
+							class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="#">Book.net</a>
+				</div>
+				<div id="navbar" class="navbar-collapse collapse">
+					<ul class="nav navbar-nav navbar-left">
+						<li class="active"><a th:href="@{/}">Home</a></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Livros <span class="caret"></span></a>
+
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/livro/form}">Cadastro</a></li>
+								<li><a th:href="@{/livro/pesquisa}">Pesquisa</a></li>
+								<!-- 								<li><a href="#">Lançamentos</a></li> -->
+								<!-- 								<li><a href="#">Mais Vendidos</a></li> -->
+								<!-- 								<li role="separator" class="divider"></li> -->
+								<!-- 								<li><a href="#">Separated link</a></li> -->
+							</ul></li>
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">CategoriaLivros <span class="caret"></span></a>
+
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/categoria/form}">Cadastro</a></li>
+								<li><a th:href="@{/categoria/pesquisa}">Pesquisa</a></li>
+							</ul></li>
+							
+							<li class="dropdown">
+						   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
+						      aria-haspopup="true" aria-expanded="false">Relatórios 
+						        <span class="caret"></span>
+						   </a>
+						
+							<ul class="dropdown-menu">
+								<li><a data-th-href="@{/relatorios/Livros/pdf}">Relação de Livros</a></li>
+								<li><a data-th-href="@{/relatorios/Categorias/pdf}">Categoria de Livros</a></li>
+								<li><a data-th-href="@{/relatorios/Editoras/pdf}">Editoras de Livros</a></li>
+								<li><a data-th-href="@{/relatorios/Autores/pdf}">Autores de Livros</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Editora <span class="caret"></span></a>
+
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/editora/form}">Cadastro</a></li>
+								<li><a th:href="@{/editora/pesquisa}">Pesquisa</a></li>
+							</ul></li>
+
+						<li class="dropdown"><a href="#" class="dropdown-toggle"
+							data-toggle="dropdown" role="button" aria-haspopup="true"
+							aria-expanded="false">Autor <span class="caret"></span></a>
+
+							<ul class="dropdown-menu">
+								<li><a th:href="@{/autor/form}">Cadastro</a></li>
+								<li><a th:href="@{/autor/pesquisa}">Pesquisa</a></li>
+							</ul></li>
+
+
+						<li>
+
+							<form class="navbar-form">
+								<div class="form-group">
+									<input type="text" name="palava-chave" class="form-control"
+										placeholder="Título do Livro" />
+									<button type="submit" class="btn btn-default">Pesquisar</button>
+								</div>
+							</form>
+						</li>
+					</ul>
+					
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Seja bem vindo: 
+						      <span sec:authentication="name">Visitante</span></a>
+						</li>
+						<li>
+						  <form th:action="@{/logout}" method="POST" style="padding-top:10px">
+						     <button type="submit" class="btn btn-link"> 
+						     <span class="glyphicon glyphicon-new-window" title="Sair"></span></button>
+						  </form>  
+						</li>
+					</ul>
+
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="#">Carrinho</a></li>
+						<li><a href="#">Minha Conta</a></li>
+						<li><a href="#">Sair</a></li>
+					</ul>
+				</div>
+				<!--/.nav-collapse -->
+			</div>
+			<!--/.container-fluid -->
+		</nav>
+	</header>
+	<!-- fragment th:barra-navegacao -->
+
+
+	<!-- 	<div th:fragment="caixa-exclusao"> -->
+	<!-- 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"> -->
+	<!--   <div class="modal-dialog" role="document"> -->
+	<!--     <div class="modal-content"> -->
+	<!--       <div class="modal-header"> -->
+	<!--         <h5 class="modal-title">Excluir Item</h5> -->
+	<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+	<!--           <span aria-hidden="true">&times;</span> -->
+	<!--         </button> -->
+	<!--       </div> -->
+	<!--       <div class="modal-body"> -->
+	<!--         <p>Deseja realmente excluir este item?</p> -->
+	<!--       </div> -->
+	<!--       <div class="modal-footer"> -->
+	<!--       <a th:href="@{/livro/deleta{id}(id=${livro.id})}"  method="DELETE" class="btn btn-sm"> <span -->
+	<!-- 										class="btn btn-danger">Excluir</span> </a> -->
+
+	<!--         <button type="button" class="btn btn-secondary" data-dismiss="modal">Nao</button> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<!--   </div> -->
+	<!-- </div> -->
+	<!-- </div> -->
+	<!-- 	caixa exclucao livro  -->
+
+	<!-- 	<div th:fragment="caixa-exclusao-categoria-livro"> -->
+	<!-- 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"> -->
+	<!--   <div class="modal-dialog" role="document"> -->
+	<!--     <div class="modal-content"> -->
+	<!--       <div class="modal-header"> -->
+	<!--         <h5 class="modal-title">Excluir Categoria</h5> -->
+	<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+	<!--           <span aria-hidden="true">&times;</span> -->
+	<!--         </button> -->
+	<!--       </div> -->
+	<!--       <div class="modal-body"> -->
+	<!--         <p>Deseja realmente excluir esta Categoria?</p> -->
+	<!--       </div> -->
+	<!--       <div class="modal-footer"> -->
+	<!--       <a th:href="@{/categoria/deleta{id}(id=${categorialivro.id})}"  method="DELETE" class="btn btn-sm"> <span -->
+	<!-- 										class="btn btn-danger">Excluir</span> </a> -->
+
+	<!--         <button type="button" class="btn btn-secondary" data-dismiss="modal">Nao</button> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<!--   </div> -->
+	<!-- </div> -->
+	<!-- </div> -->
+	<!-- 	caixa exclucao categoria  -->
+
+	<!-- <div th:fragment="caixa-exclusao-editora"> -->
+	<!-- 	<div class="modal fade" id="delete-modal" tabindex="-1" role="dialog" aria-labelledby="modalLabel"> -->
+	<!--   <div class="modal-dialog" role="document"> -->
+	<!--     <div class="modal-content"> -->
+	<!--       <div class="modal-header"> -->
+	<!--         <h5 class="modal-title">Excluir Editora</h5> -->
+	<!--         <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
+	<!--           <span aria-hidden="true">&times;</span> -->
+	<!--         </button> -->
+	<!--       </div> -->
+	<!--       <div class="modal-body"> -->
+	<!--         <p>Deseja realmente excluir esta Categoria?</p> -->
+	<!--       </div> -->
+	<!--       <div class="modal-footer"> -->
+	<!--       <a th:href="@{/editora/deleta{id}(id=${editora.id})}"  method="DELETE" class="btn btn-sm"> <span -->
+	<!-- 										class="btn btn-danger">Excluir</span> </a> -->
+
+	<!--         <button type="button" class="btn btn-secondary" data-dismiss="modal">Nao</button> -->
+	<!--       </div> -->
+	<!--     </div> -->
+	<!--   </div> -->
+	<!-- </div> -->
+	<!-- </div> -->
+	<!--  	caixa exclucao categoria  -->
+
+	<div th:fragment="scripts-js">
+		<script th:src="@{/jquery/jquery-2.1.4.min.js}"></script>
+		<script th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+	</div>
+
+	<div th:fragment="mybookstore-js">
+		<script th:src="@{/javascript/mybookstore.js}"></script>
+	</div>
+</body>
+
+</html>
