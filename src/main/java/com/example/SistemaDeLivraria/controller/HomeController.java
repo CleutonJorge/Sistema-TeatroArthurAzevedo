@@ -14,7 +14,7 @@ public class HomeController {
 
 	@GetMapping("/")
 	public ModelAndView home() {
-		ModelAndView modelAndView = new ModelAndView("/index");
+		ModelAndView modelAndView = new ModelAndView("/indexx");
 		modelAndView.addObject("livros", livros.findAll());
 		return modelAndView;
 	}
