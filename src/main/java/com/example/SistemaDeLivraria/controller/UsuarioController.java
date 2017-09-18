@@ -2,9 +2,12 @@ package com.example.SistemaDeLivraria.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.SistemaDeLivraria.model.Livro;
 import com.example.SistemaDeLivraria.model.Usuario;
 import com.example.SistemaDeLivraria.repository.Usuarios;
 
@@ -13,6 +16,19 @@ public class UsuarioController {
 
 	@Autowired
 	private Usuarios usuarios;
+	
+//	@GetMapping("/minhaConta")
+//	public ModelAndView minhaConta() {
+//		ModelAndView modelAndView = new ModelAndView("/conta-usuario");
+//		modelAndView.addObject("usuarios", usuarios.findAll());
+//		return modelAndView;
+//	}
+	
+	@GetMapping("/minhaConta")
+	public String form(Model model, Usuario usuario) {
+		model.addAttribute("usuario", usuario);
+		return "conta-usuario";
+	}
 
 	@PostMapping("/usuario/salvar")
 	public ModelAndView salvar(Usuario usuario) {

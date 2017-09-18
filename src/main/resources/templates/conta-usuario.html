@@ -2,19 +2,22 @@
 <html xmlns:th="http://www.thymeleaf.org">
 
 <head th:replace="layout/fragmentos-layout :: cabecalho">
+<link rel="stylesheet"
+	th:href="@{/webjars/bootstrap-datepicker/1.6.4/dist/css/bootstrap-datepicker.standalone.min.css}" />
 
 </head>
 
 <body>
+<span data-th-replace="layout/fragmentos-scripts :: script-tinymce"></span>
 	<header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
 
 	<main class="container"> <header class="row borda-inferior">
 		<div class="col-sm-8">
 			<h2 class="titulo-secao">Conta do Usuário</h2>
 		</div>
-		<div class="col-sm-4">
-			<img src="/imagens/myBookStore.png" class="img-responsive" alt="Logo" />
-		</div>
+<!-- 		<div class="col-sm-4"> -->
+<!-- 			<img src="/imagens/myBookStore.png" class="img-responsive" alt="Logo" /> -->
+<!-- 		</div> -->
 	</header> <!-- class="row borda-inferior" --> <!-- Painel com Abas -->
 	<section class="row" style="margin-top: 5rem;">
 		<div class="col-sm-9 col-sm-offset-3">
@@ -45,7 +48,32 @@
 			
 			<!-- Tab panes -->
 			<div class="tab-content">
-			 
+			     <div  role="tabpanel" class="tab-pane " id="tab-2">
+			        <form th:action="@{/login}" method="POST">
+        <h2 class="form-signin-heading">Acessar myBookstore</h2>
+        
+        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+        
+        <!-- <label for="inputEmail" class="sr-only">Usuário</label> -->
+        <input type="text" id="inputUsername" name="username" 
+               class="form-control" placeholder="login"/>
+        
+        <!-- <label for="inputPassword" class="sr-only">Senha</label> -->
+        <input type="password" id="inputPassword" name="password" 
+               class="form-control" placeholder="Senha" style="margin-top:0.6rem" />
+        
+        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:1rem">
+        	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logar
+        </button>
+        
+        <div th:if="${#bools.isTrue(param.error)}" class="alert alert-danger" 
+             role="alert" style="margin-top:1.5rem">Usuário ou Senha Inválida</div>
+    
+        <div th:if="${#bools.isTrue(param.logout)}" class="alert alert-info" 
+             role="alert" style="margin-top:1.5rem">Logout realizado com sucesso</div>
+      
+      </form>
+			     </div>
 
 				<!-- Tab 1 - criar uma nova conta -->
 				<div role="tabpanel" class="tab-pane active" id="tab-1">
@@ -54,97 +82,120 @@
 							<div class="panel-body"
 								style="background-color: #ededed; margin-top: 1rem;">
 
-								<form action="/usuario/salvar" method="post">
-									<div class="form-group">
-										<label for="usuario">* Login</label> <input id="usuario"
-											name="nome" type="text" class="form-control"
-											required="required" autofocus="autofocus" />
-										<p style="color: #828282">
-											<em>Informe o nome do usuário</em>
-										</p>
-									</div>
+								<form class="form-horizontal" th:action="@{/usuario/salvar}"
+					method="post" th:object="${usuario}" enctype="multipart/form-data">
+                    
+					<div th:replace="layout/fragmentos-mensagens :: mensagem-erro-form" />
 
-									<div class="form-group">
-										<label for="email">* Email</label> <input id="email"
-											name="email" required="required" type="text"
-											class="form-control" />
-										<p style="color: #828282">
-											<em>Informe um endereço de email válido. Todos os email
-												deste sistema será enviado para este endereço. Este email
-												será de uso privativo e somente será usado quando você
-												desejá receber uma nova senha ou algumas notificações.</em>
-										</p>
-									</div>
-									<button type="submit" class="btn btn-primary">Criar
-										uma nova conta</button>
-								</form>
+					<!-- 					<fieldset> -->
+					<legend class="center-block">
+						<h2>Cadastrar Conta</h2>
+						<span style="font-size: small">* Campo requerido</span>
+					</legend>
+
+
+
+					<!-- Campo Id é necessário para diferenciar quando é um novo livro 
+				     ou a edição de um já existente -->
+
+<!-- 					<input type="hidden" name="id" th:value="${usuarios.id}" /> -->
+
+					<!-- Título -->
+					<div class="form-group"
+						>
+						<label class="col-md-2 control-label" for="titulo">*
+							Login</label>
+
+						<div class="col-md-8">
+							<input type="text" name="login" class="form-control" id="login"
+								th:value="${usuario.login}" placeholder="Login" /> <span
+								class="help-block">Login</span>
+						</div>
+					</div>		
+					
+					<div class="form-group"
+						>
+						<label class="col-md-2 control-label" for="titulo">*
+							Senha</label>
+
+						<div class="col-md-8">
+							<input type="text" name="senha" class="form-control" id="senha"
+								th:value="${usuario.senha}" placeholder="Senha" /> <span
+								class="help-block">Senha</span>
+						</div>
+					</div>	
+					
+					<div class="form-group"
+						>
+						<label class="col-md-2 control-label" for="titulo">*
+							Nome</label>
+
+						<div class="col-md-8">
+							<input type="text" name="nome" class="form-control" id="nome"
+								th:value="${usuario.nome}" placeholder="Nome" /> <span
+								class="help-block">Nome</span>
+						</div>
+					</div>		
+					
+					<div class="form-group"
+						>
+						<label class="col-md-2 control-label" for="titulo">*
+							E-mail</label>
+
+						<div class="col-md-8" th:classappend="${#fields.hasErrors('email')} ? 'has-error has-feedback' ">
+							<input type="text" name="email" class="form-control" id="email"
+								th:value="${usuario.email}" placeholder="Título" /> <span
+								class="help-block">E-mail</span>
+						</div>
+					</div>	
+					
+					<div class="form-group"
+						>
+						<label class="col-md-2 control-label" for="titulo">*
+							Telefone</label>
+
+						<div class="col-md-8">
+							<input type="text" name="telefone" class="form-control" id="telefone"
+								th:value="${usuario.telefone}" placeholder="Telefone" /> <span
+								class="help-block">Telefone</span>
+						</div>
+					</div>			
+
+						
+					<div class="form-group">
+						<div class="col-md-2"></div>
+						<div class="col-md-8">
+							<button type="submit" class="btn btn-success">Salvar</button>
+							<a class="btn btn-danger" th:href="@{/}">Cancela</a>
+						</div>
+					</div>
+					<!-- 					</fieldset> -->
+				</form>
 
 							</div>
 						</div>
 					</div>
 				</div>
 				<!-- Tab-2 - Login-->
-				<div role="tabpanel" class="tab-pane fade" id="tab-2">
-					<div class="panel-group">
-						<div class="panel panel-default">
-							<div class="panel-body"
-								style="background-color: #ededed; margin-top: 1rem;">
-								<form>
-									<div class="form-group">
-										<label for="usuario">* Login</label> <input id="usuario"
-											name="usuarioXX" type="text" class="form-control"
-											required="required" autofocus="autofocus" />
-										<p style="color: #828282">
-											<em>Informe o nome do usuário</em>
-										</p>
-									</div>
-
-									<div class="form-group">
-										<label for="senha">* Senha</label> <input id="senha"
-											name="senhaXX" type="password" class="form-control"
-											required="required" />
-										<p style="color: #828282">
-											<em>Informe uma senha válida.</em>
-										</p>
-									</div>
-									<button type="submit" class="btn btn-primary">Acessar</button>
-								</form>
-
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<!-- Tab 3 - Esqueceu a senha -->
-				<div role="tabpanel" class="tab-pane fade" id="tab-3">
-					<div class="panel-group">
-						<div class="panel panel-default">
-							<div class="panel-body"
-								style="background-color: #ededed; margin-top: 1rem;">
-								<form>
-
-									<div class="form-group">
-										<label for="recuperar-senha">* Senha</label> <input
-											id="recuperar-senha" name="email" type="text"
-											class="form-control" required="required"
-											autofocus="autofocus" />
-
-										<p style="color: #828282">
-											<em>Informe o seu endereço de email registrado no
-												sistema.</em>
-										</p>
-									</div>
-									<button type="submit" class="btn btn-primary">Enviar</button>
-								</form>
-							</div>
-						</div>
-					</div>
-				</div>
+				
 			</div>
 		</div>
 	</section>
 	</main>
+	<div th:replace="layout/fragmentos-layout :: scripts-js"></div>
+	<script
+		th:src="@{/webjars/bootstrap-datepicker/1.6.4/dist/js/bootstrap-datepicker.min.js}"></script>
+	<script
+		th:src="@{/webjars/bootstrap-datepicker/1.6.4/dist/locales/bootstrap-datepicker.pt-BR.min.js}"></script>
+	<script
+		th:src="@{/webjars/jquery-maskmoney/3.0.2/dist/jquery.maskMoney.min.js}"></script>
+	<div th:replace="layout/fragmentos-layout :: mybookstore-js"></div>
 
-	<div th:replace="layout/fragmentos-layout-layout :: scripts-js"></div>
+	<span data-th-replace="layout/fragmentos-scripts :: bootstrap"></span>
+	<span data-th-replace="layout/fragmentos-scripts :: datepicker"></span>
+	<span data-th-replace="layout/fragmentos-scripts :: maskmoney"></span>
+	<span data-th-replace="layout/fragmentos-scripts :: mybookstore-js"></span>
+
+<!-- 	<div th:replace="layout/fragmentos-layout-layout :: scripts-js"></div> -->
 </body>
 </html>

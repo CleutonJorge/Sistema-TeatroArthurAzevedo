@@ -19,10 +19,12 @@ public class HomeController {
 		return modelAndView;
 	}
 
-	@GetMapping("/minhaConta")
-	public String minhaConta() {
-		return "conta-usuario";
-	}
+//	@GetMapping("/minhaConta")
+//	public ModelAndView minhaConta() {
+//		ModelAndView modelAndView = new ModelAndView("/conta-usuario");
+//		modelAndView.addObject("usuarios", usuarios.findAll());
+//		return modelAndView;
+//	}
 	/*
 	 * @GetMapping("/index2") public ModelAndView home2() { ModelAndView
 	 * modelAndView = new ModelAndView("/index2" );

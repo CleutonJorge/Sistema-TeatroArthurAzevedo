@@ -31,8 +31,18 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 		    .antMatchers("/livro/form").hasRole("ADMIN")
+		    .antMatchers("/categoria/form").hasRole("ADMIN")
+		    .antMatchers("/editora/form").hasRole("ADMIN")
+		    .antMatchers("/autor/form").hasRole("ADMIN")
 		    .antMatchers("/livro/pesquisa").permitAll()
 		    .antMatchers(HttpMethod.POST, "/livro/remove").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/categoria/remove").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/editora/remove").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/autor/remove").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/livro/deleta{id}").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/categoria/deleta{id}").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/editora/deleta{id}").hasRole("ADMIN")
+		    .antMatchers(HttpMethod.POST, "/autor/deleta{id}").hasRole("ADMIN")
 		    
 		    // permite tudo que não foi bloqueado anteriormente
 		    .antMatchers("/**").permitAll()
