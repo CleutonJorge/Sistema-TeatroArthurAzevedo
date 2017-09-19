@@ -19,7 +19,7 @@ public class ConexaoComponente {
 	public Connection obterConexaoJDBC() {
 		
 		try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/booknet?useSSL=false", "root", "root" );
+			return DriverManager.getConnection("jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_ac77cc65b91ce6b?reconnect=true", "b12e2c5b6d1bc3", "a5ece82f" );
 		
 		} catch (SQLException e) {
 			LOG.error("Erro ao obter conexão JDBC");

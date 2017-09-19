@@ -15,6 +15,7 @@ import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.crypto.bcrypt.BCrypt;
 
 import com.example.SistemaDeLivraria.model.Role;
 
@@ -61,7 +62,9 @@ public class Usuario implements UserDetails{
 	}
 
 	public void setSenha(String senha) {
-		this.senha = senha;
+		String salt = BCrypt.gensalt();
+		String hashed_password = BCrypt.hashpw(senha, salt);
+		this.senha = hashed_password;
 	}
 
 	public String getNome() {
