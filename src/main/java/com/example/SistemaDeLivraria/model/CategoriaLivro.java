@@ -1,9 +1,11 @@
 package com.example.SistemaDeLivraria.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -18,6 +20,46 @@ public class CategoriaLivro {
 	@NotEmpty(message = "{livro.form.titulo.obrigatoria}")
 	@Size(min = 2, message = "{livro.form.titulo.tamanho}")
 	private String nomeCategoria;
+	
+	private int inteira;
+	private int meia;
+	private String descricao;
+	private String fotoPath;
+	private String caminhoFotoLivro;
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+	private DetalhesImagemLivro detalhesImagem;
+	
+	public String getFotoPath() {
+		return fotoPath;
+	}
+
+	public void setFotoPath(String fotoPath) {
+		this.fotoPath = fotoPath;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
+	public int getInteira() {
+		return inteira;
+	}
+
+	public void setInteira(int inteira) {
+		this.inteira = inteira;
+	}
+
+	public int getMeia() {
+		return meia;
+	}
+
+	public void setMeia(int meia) {
+		this.meia = meia;
+	}
 
 	public Integer getId() {
 		return id;
@@ -38,6 +80,18 @@ public class CategoriaLivro {
 	@Override
 	public String toString() {
 		return this.nomeCategoria;
+	}
+	
+	public DetalhesImagemLivro getDetalhesImagem() {
+		return detalhesImagem;
+	}
+
+	public void setDetalhesImagem(DetalhesImagemLivro detalhesImage) {
+		this.detalhesImagem = detalhesImage;
+	}
+
+	public boolean temFotoCapa() {
+		return (this.detalhesImagem != null) && (this.detalhesImagem.getNomeArquivo() != null);
 	}
 
 	// @Id

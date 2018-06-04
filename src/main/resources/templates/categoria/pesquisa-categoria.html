@@ -5,6 +5,7 @@
 
 <body class="corBackBody">
 
+<div class="header-blue" style="background-color:#FFFFFF;background-image:url(&quot;none&quot;);">
 	<header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
 
 
@@ -17,10 +18,9 @@
 
 			<div class="panel-heading">
 				<div class="clearfix">
-					<h1 class="panel-title" style="float: left">Pesquisa de
-						Cadastro de Livros</h1>
+					<h1 class="panel-title" style="float: left">Pesquisa de Eventos</h1>
 					<a th:href="@{/categoria/form}" class="btn btn-link"
-						style="float: right">Novo Cadastro de Livro</a>
+						style="float: right">Novo Cadastro de Eventos</a>
 				</div>
 			</div>
 
@@ -35,9 +35,10 @@
 										<input type="checkbox" id="todoscheckbox-js" />
 									</div>
 								</th>
+								<th class="text-center col-md-1">IMAGEM</th>
 								<th class="text-center col-md-1">ID</th>
-								<th>Nome Categoria</th>
-								<th class="text-center col-md-3">Ações</th>
+								<th>____________________Evento____________________</th>
+								<th class="text-center col-md-3">____________________Ações____________________</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -47,6 +48,13 @@
 									<input type="checkbox" th:id="${categorialivro.id}"
 									class="checkboxlivro-js" /> <!-- <input type="checkbox" th:id="'selected'+${livro.id}"  class="checkboxlivro-js" /> -->
 								</td>
+								<td class="text-center col-sm-1"><img
+									th:if="${categorialivro.temFotoCapa()== true}"
+									data-th-src="@{|/${categorialivro.detalhesImagem.fotoPath}|}"
+									alt="Foto do Livro" height="60px" /> <img
+									th:if="${categorialivro.temFotoCapa() == false}"
+									data-th-src="@{/imagens/img-livro-indisponivel.jpg}"
+									alt="Foto do Livro" height="60px" /></td>
 								<td class="text-center col-sm-1" th:text="${categorialivro.id}"></td>
 								<td class="text-left" th:text="${categorialivro.nomeCategoria}"></td>
 								<td class="col-sm-4 text-center">
@@ -73,7 +81,7 @@
 						<tr>
 							<td colspan="9">
 								<button th:id="excluir-livros" class="btn btn-danger btn-sm">Excluir
-									as Editoras Selecionadas</button>
+									as Eventos Selecionados</button>
 							</td>
 						</tr>
 					</table>
@@ -95,6 +103,11 @@
 		</div>
 	</section>
 	<!-- row --> </main>
+	</div>
+	
+	 <script th:src="@{/assets/js/jquery.min.js}"></script>
+        <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/assets/js/bs-animation.js}"></script>
 
 	<div th:replace="layout/fragmentos-layout :: scripts-js"></div>
 

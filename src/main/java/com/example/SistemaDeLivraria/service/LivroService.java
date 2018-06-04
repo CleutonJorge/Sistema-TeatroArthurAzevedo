@@ -15,6 +15,7 @@ import com.example.SistemaDeLivraria.model.Editora;
 import com.example.SistemaDeLivraria.model.Livro;
 import com.example.SistemaDeLivraria.repository.CategoriaLivros;
 import com.example.SistemaDeLivraria.repository.Editoras;
+import com.example.SistemaDeLivraria.repository.Imagens;
 import com.example.SistemaDeLivraria.repository.Livros;
 
 import com.example.SistemaDeLivraria.model.DetalhesImagemLivro;
@@ -24,6 +25,9 @@ public class LivroService {
 
 	@Autowired
 	Livros livros;
+	
+	@Autowired
+	Imagens imagens;
 
 	@Autowired
 	private CategoriaLivros categoriaLivros;
@@ -66,6 +70,10 @@ public class LivroService {
 
 	public Livro buscaPor(Long id) {
 		return livros.findOne(id);
+	}
+	
+	public DetalhesImagemLivro buscaPorImg(Long id) {
+		return imagens.findOne(id);
 	}
 
 	public void deletarLivro(Livro livro) {

@@ -5,6 +5,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.commons.logging.Log;
+import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -21,13 +23,17 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
+import com.example.SistemaDeLivraria.controller.util.ArquivoUpload;
 import com.example.SistemaDeLivraria.model.CategoriaLivro;
+import com.example.SistemaDeLivraria.model.DetalhesImagemLivro;
 import com.example.SistemaDeLivraria.model.Editora;
 import com.example.SistemaDeLivraria.service.CategoriaLivroService;
 
 @Controller
 @RequestMapping("/categoria")
 public class CategoriaLivroControle {
+	
+	private static final Log LOG = LogFactory.getLog(RelatorioController.class );
 
 	@Autowired
 	CategoriaLivroService CategorialivroService;
@@ -37,23 +43,39 @@ public class CategoriaLivroControle {
 		CategoriaLivro Categorialivro = new CategoriaLivro();
 
 		model.addAttribute("categorialivro", Categorialivro);
-		return "categoria/cadastro-categoria";
+		return "categoria/Evento_create";
 	}
 
 	@PostMapping("/salva")
 	public String salva(@Validated CategoriaLivro Categorialivro, Errors validacao, RedirectAttributes redirect,
 			MultipartFile imagemDoLivro, HttpServletRequest request) {
 
-		// System.out.println("######## Imagem do Livro : " +
+		 //System.out.println("######## Imagem do Livro : " +
 		// foto.getOriginalFilename() );
 
 		if (validacao.hasErrors()) {
-			return "categoria/cadastro-categoria";
+			return "categoria/Evento_create";
 		}
 
-		CategorialivroService.salva(Categorialivro);
+		Categorialivro = CategorialivroService.salva(Categorialivro);
+		
+		System.out.println("######## Imagem do Livrosdfsfsdddddddddddddddddddddd--------iop-- :");
+		
+		if (foiSelecionadaA(imagemDoLivro)) {
+			System.out.println("######## Imagem do Livrosdfsfsdddddddddddddddddddddd---------- :");
+			ArquivoUpload arquivoUpload = new ArquivoUpload(imagemDoLivro);
 
-		redirect.addFlashAttribute("mensagem_sucesso", "A Categoria do livro foi Salvo com Sucesso");
+			arquivoUpload.salvaImagem("imagens/img-livros", Categorialivro.getId().longValue(), request);
+
+			DetalhesImagemLivro imagemLivro = arquivoUpload.criaDetalhesImagemLivro();
+
+			Categorialivro.setDetalhesImagem(imagemLivro);
+
+		}
+		CategorialivroService.salva(Categorialivro);
+		LOG.info("Método salva() -- Livro " + Categorialivro.getDescricao() );
+
+		redirect.addFlashAttribute("mensagem_sucesso", "Evento Adicionado com Sucesso");
 		String rota = Categorialivro.ehNovo() ? "redirect:/categoria/form" : "redirect:/categoria/pesquisa";
 
 		return rota;
@@ -62,6 +84,16 @@ public class CategoriaLivroControle {
 	@ModelAttribute("todasCategorias")
 	public List<CategoriaLivro> todasCategorias() {
 		return CategorialivroService.todas();
+	}
+	
+//	@ModelAttribute("buscarEventoId")
+//	public CategoriaLivro buscarEventoId() {
+//		long n = 2;
+//		return CategorialivroService.buscaPor(n);
+//	}
+	
+	private boolean foiSelecionadaA(MultipartFile imagem) {
+		return (imagem != null) && (!imagem.isEmpty());
 	}
 
 	@RequestMapping("/deleta{id}")
@@ -76,7 +108,7 @@ public class CategoriaLivroControle {
 		System.out.println("Deu certo");
 		CategoriaLivro Categorialivro = CategorialivroService.buscaPor(livroId);
 		CategorialivroService.deletarLivro(Categorialivro);
-		redirect.addFlashAttribute("mensagem_sucesso", "O Livro foi Removido com Sucesso");
+		redirect.addFlashAttribute("mensagem_sucesso", "O evento foi removido com Sucesso");
 
 		return this.pesquisa();
 
@@ -94,7 +126,7 @@ public class CategoriaLivroControle {
 	public ModelAndView edicao(@PathVariable Integer id) {
 		CategoriaLivro Categorialivro = CategorialivroService.buscaPor(id);
 
-		ModelAndView modelAndView = new ModelAndView("categoria/cadastro-categoria");
+		ModelAndView modelAndView = new ModelAndView("categoria/Evento_create");
 		modelAndView.addObject("categorialivro", Categorialivro);
 
 		return modelAndView;
@@ -109,7 +141,7 @@ public class CategoriaLivroControle {
 
 		listaLivroId.forEach(id -> CategorialivroService.excluirPelo(id));
 
-		return "Editoras excluídas com sucesso";
+		return "Eventos Excluidos com sucesso";
 
 	}
 

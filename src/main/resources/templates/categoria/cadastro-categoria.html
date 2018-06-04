@@ -7,6 +7,7 @@
 
 <body class="corBackBody">
 
+<div class="header-blue" style="background-color:#FFFFFF;background-image:url(&quot;none&quot;);">
 	<header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
 
 	<!-- conteúdo principal -->
@@ -24,9 +25,9 @@
 			<div class="panel-heading">
 				<div class="clearfix">
 					<h1 class="panel-title" style="float: left">Cadastro de
-						Categoria Livro</h1>
+						Eventos</h1>
 					<a th:href="@{/categoria/pesquisa}" class="btn btn-link"
-						style="float: right">Pesquisar Categoria Livro</a>
+						style="float: right">Pesquisar Eventos</a>
 				</div>
 			</div>
 
@@ -82,6 +83,11 @@
 		<!-- panel -->
 	</section>
 	<!-- row --> </main>
+	</div>
+	
+	 <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
 
 	<div th:replace="layout/fragmentos-layout :: scripts-js"></div>
 	<script

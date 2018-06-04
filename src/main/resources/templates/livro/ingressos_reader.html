@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+
+<head th:replace="layout/fragmentos-layout :: cabecalho"></head>
+
+
+
+<body>
+ 
+ <head th:replace="layout/fragmentos-caixaExclusao :: caixa-exclusao"></head> 
+ <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
+ <header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
+    <div class=" col-md-16" data-bs-parallax-bg="true" data-th-src="@{/imagens/img-livro-indisponivel.jpg}" style="height:500px;background-image:url(&quot;/imagens/img-livro-indisponivel.jpg&quot;);background-position:center;background-size:cover;">
+    <img class=" col-md-12" alt="" data-bs-parallax-bg="true" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}" style="height:500px;weight:1000px;background-position:center;background-size:cover;">
+    </div>
+    <div class="features-clean">
+        <div class="container">
+            <div class="intro">
+                <h2 class="text-center" th:text="${livro.categorias}">Evento : Tirulipa</h2>
+                <p class="text-center">Informaçoes da Venda. </p>
+            </div>
+            <div class="row features">
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-money icon"></i>
+                    <h3  class="name">Preço&nbsp;</h3>
+                    <p class="description" th:text="|R$ ${livro.precoTabelado}|">R$ : 60&nbsp;</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-clock-o icon"></i>
+                    <h3 class="name">Data</h3>
+                    <p class="description" th:text="${{livro.dataPublicacao}}">13 de MAIO - 2018 - 21H DOMINGO</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Tipo de Ingresso</h3>
+                    <p class="description" th:text="${livro.editora}">GALERIA - MEIA ENTRADA</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-cubes icon"></i>
+                    <h3 class="name">Quantidade</h3>
+                    <p class="description" th:text="${livro.quantidaEmEstoque}">3</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-text-width icon"></i>
+                    <h3 class="name">Total</h3>
+                    <p class="description" th:text="${livro.precoTabelado} * ${livro.quantidaEmEstoque}">R$ : 90&nbsp;</p>
+                </div>
+                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
+                    <h3 class="name">Descrição</h3>
+                    <p class="description" th:text="${livro.descricao}">Ingresso comprado no caixa 2 da bilheteria do teatro</p>
+                </div>
+                
+                <div class="col-md-12">
+			<a th:href="@{/livro/pesquisa}" class="btn btn-sm"> <span
+				class="btn btn-success">Voltar</span>
+			</a>
+
+			<!-- Edição -->
+			<a th:href="@{/livro/{id}(id=${livro.id})}" class="btn btn-sm"> <span
+				class="btn btn-primary">Alterar</span>
+			</a> <a href="#" class="btn btn-danger" data-toggle="modal"
+				data-target="#delete-modal">Excluir</a>
+			<!--                                            <a th:attrappend="data-id=${livro.id}" class="btn btn-danger excluir-livro-js" value="excluir">Excluir</a>  -->
+		</div>
+            </div>
+        </div>
+    </div>
+    </div>
+	   <script th:src="@{/assets/js/jquery.min.js}"></script>
+        <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+<!--         <script th:src="@{/assets/js/bs-animation.js}"></script> -->
+	    
+	    <div th:replace="layout/fragmentos-layout :: scripts-js"></div>
+
+<div data-th-replace="layout/fragmentos-scripts :: bootstrap"></div>
+<div data-th-replace="layout/fragmentos-scripts :: bootbox"></div>
+<div data-th-replace="layout/fragmentos-scripts :: mybookstore-js"></div>
+
+
+</body>
+
+</html>

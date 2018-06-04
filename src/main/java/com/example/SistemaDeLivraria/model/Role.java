@@ -1,7 +1,10 @@
 package com.example.SistemaDeLivraria.model;
 
+import java.util.List;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
 
 import org.springframework.security.core.GrantedAuthority;
 
@@ -12,8 +15,19 @@ public class Role implements GrantedAuthority {
 
 	@Id
 	private String nome;
+	
+	@OneToMany(mappedBy = "permissoes")
+	private List<Usuario> usuarios;
 
 	
+	public List<Usuario> getUsuarios() {
+		return usuarios;
+	}
+
+	public void setUsuarios(List<Usuario> usuarios) {
+		this.usuarios = usuarios;
+	}
+
 	public String getNome() {
 		return nome;
 	}
@@ -24,6 +38,11 @@ public class Role implements GrantedAuthority {
 
 	@Override
 	public String getAuthority() {
+		return this.nome;
+	}
+	
+	@Override
+	public String toString() {
 		return this.nome;
 	}
 

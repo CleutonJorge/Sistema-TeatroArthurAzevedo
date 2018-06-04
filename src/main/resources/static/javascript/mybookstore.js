@@ -27,6 +27,7 @@ $(function () {
 //consultar
 //http://www.thymeleaf.org/doc/tutorials/2.1/usingthymeleaf.html#script-inlining-javascript-and-dart
 
+
 $(document).ready( function() {
 	$('.pesquisa-js').click(function() {
 		var form = document.getElementById('formulario');
@@ -40,6 +41,26 @@ $(document).ready( function() {
 		    // impede o envio do form
 		    e.preventDefault();
 		});
+	});
+	
+	$('.checkbox-js').click(function() {
+	    $('#search').on('keyup', function() {
+	        var pattern = $(this).val();
+	        $('.searchable-container .items').hide();
+	        $('.searchable-container .items').filter(function() {
+	            return $(this).text().match(new RegExp(pattern, 'i'));
+	        }).show();
+	    });
+	});
+	
+	$('.checkbox2-js').click(function() {
+	    $('#search2').on('keyup', function() {
+	        var pattern = $(this).val();
+	        $('.searchable-container2 .items2').hide();
+	        $('.searchable-container2 .items2').filter(function() {
+	            return $(this).text().match(new RegExp(pattern, 'i'));
+	        }).show();
+	    });
 	});
 	
 $('.excluir-livro-js').click(function() {
@@ -74,8 +95,11 @@ $('.excluir-livro-js').click(function() {
 		mensagem = "Confirma a exclusão da categoria";
 	}
 	
+	
+	console.log('Caixa Exclusao');
 	bootbox.confirm({
-	    title: title,
+		className: "show",
+		title: title,
 	    message: mensagem,
 	    buttons: {
 	        cancel: {
@@ -86,8 +110,10 @@ $('.excluir-livro-js').click(function() {
 	        }
 	    },
 	    callback: function (confirmado) {
+	    	console.log('Confirmado passed');
 	    	if (confirmado)
 	           $.post(path, {'id':id}, function(resposta) {
+	        	   console.log('Caixa Exclusao');
 	        	   location.reload();
 	        	   console.log('o livro foi removido com sucesso');
 	           })
@@ -96,7 +122,15 @@ $('.excluir-livro-js').click(function() {
 	
 });
 
+$('.valor-js').click(function() {
+	 
+	var valor = $('.tipo').data('id');
+	console.log(valor);
+	
+});
+
 $('#excluir-livros').click(function() {
+	
 		/*<![CDATA[*/
 	        var path = /*[[@{/}]]*/ 'removeLista';
 	    /*]]>*/

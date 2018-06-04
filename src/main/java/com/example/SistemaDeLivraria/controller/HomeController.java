@@ -5,17 +5,22 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.example.SistemaDeLivraria.model.CategoriaLivro;
+import com.example.SistemaDeLivraria.repository.CategoriaLivros;
 import com.example.SistemaDeLivraria.repository.Livros;
 
 @Controller
 public class HomeController {
 	@Autowired
 	Livros livros;
+	@Autowired
+	CategoriaLivros categoria;
 
 	@GetMapping("/")
 	public ModelAndView home() {
 		ModelAndView modelAndView = new ModelAndView("index");
 		modelAndView.addObject("livros", livros.findAll());
+		modelAndView.addObject("categorialivros", categoria.findAll());
 		return modelAndView;
 	}
 

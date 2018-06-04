@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace= "layout/fragmentos-layout :: cabecalho">
+   
+</head>
+
+<body>
+<div>
+        <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
+<header  th:replace="layout/fragmentos-layout :: barra-navegacao" ></header>
+ <div class="container hero">
+            <div class="row">
+                <div class="col">
+     <div th:replace="layout/fragmentos-mensagens :: mensagem-sucesso" />
+    <a th:href="@{/categoria/pesquisa}" class="btn btn-link"
+						style="float: right">Consultar Lista de Eventos Cadastrados</a>
+    <div class="contact-clean" style="background-image:url(&quot;assets/img/ingressos-para-eventos-.jpg&quot;);background-size:cover;">
+        <form method="post" th:action="@{/categoria/salva}" th:object="${categorialivro}" enctype="multipart/form-data">
+        <div th:replace="layout/fragmentos-mensagens :: mensagem-erro-form" />
+<!--             <div class="modal fade" role="dialog" tabindex="-1" id="confirmacao"> -->
+<!--                 <div class="modal-dialog" role="document"> -->
+<!--                     <div class="modal-content"> -->
+<!--                         <div class="modal-header"> -->
+<!--                             <h4 class="modal-title">Venda de Ingresso</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div> -->
+<!--                         <div class="modal-body"> -->
+<!--                             <p>Deseja Confirmar essa solicitação?</p> -->
+<!--                         </div> -->
+<!--                         <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Não</button><button class="btn btn-primary" type="button">Save</button></div> -->
+<!--                     </div> -->
+<!--                 </div> -->
+<!--             </div> -->
+            <h2 class="text-center">Eventos</h2>
+            <input type="hidden" name="id" th:value="${categorialivro.id}" />
+            
+            <div class="form-group" th:classappend="${#fields.hasErrors('nomeCategoria')} ? 'has-error has-feedback' ">
+            <input type="text" name="nomeCategoria" id="nomeCategoria" th:value="${categorialivro.nomeCategoria}"
+			placeholder="Digite a Descriçao do evento" class="form-control" ></div>
+			
+			<div class="input-form-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text">Valor Ingresso Inteira R$</span>
+    <input onClick="inteiraFunction()" onBlur="inteiraFunction()" th:value="${categorialivro.inteira}" name="inteira" id="inteira" class="form-control maskmoney-js" type="number" placeholder="Valor"></div>
+    </div>
+    
+<!--     <div class="form-group"> -->
+<!--     <input  id="paginas" -->
+<!-- 	th:value="${livro.paginas}" name="paginas" class="form-control" type="number" required="" placeholder="Numero" min="1" max="222"></div> -->
+    
+    <div class="input-form-group mb-3">
+    <div class="input-group-prepend">
+    <span class="input-group-text">Valor Ingresso Meia R$</span>
+    <input th:value="${categorialivro.meia}" name="meia" id="meia" class="form-control maskmoney-js" type="number" placeholder="Valor"></div>
+    </div>
+    
+    <div class="form-group" >
+    <label class=" control-label" for="foto">Selecione a Imagem do Evento</label>
+            <input type="file" name="imagemDoLivro" id="foto"
+								class="form-control"
+								title="Selecione a Imagem do Evento" ></div>
+    
+  
+    
+<!--     <div class="form-group"> -->
+<!--     <input  id="paginas" -->
+<!-- 	th:value="${livro.paginas}" name="paginas" class="form-control" type="number" required="" placeholder="Numero" min="1" max="222"></div> -->
+	
+	<div class="form-group">
+        <textarea id="descricao" th:utext="${categorialivro.descricao}" th:value="${categorialivro.descricao}" class="form-control" rows="14" name="descricao" placeholder="Descrição">
+        </textarea></div>
+
+    <script>
+function inteiraFunction() {
+
+	var a = document.getElementById('inteira');
+    var b = document.getElementById('meia');
+
+    b.value = a.value /2;
+}
+
+
+// function dataFunction() {
+
+// 	var a = document.getElementById('dataPublicacao');
+// 	var b = document.getElementById('dataPublicacao2');
+	
+// 	var po = a;
+// 	var dataExclusao = po.value;
+	
+// 	var arrDataExclusao = dataExclusao.split('-');
+
+// 	var stringFormatada = arrDataExclusao[2] + '/' + arrDataExclusao[1] + '/' +
+// 	  arrDataExclusao[0];
+// 	var dataFormatada1 = new Date(stringFormatada);
+// 	var dataFormatada2 = new Date(arrDataExclusao[2], arrDataExclusao[1] - 1, arrDataExclusao[0]);
+
+// 	console.log('Data formatada 1: ' + stringFormatada);
+// 	console.log('Data formatada 2: ' + dataFormatada2);
+
+//     b.value = stringFormatada;
+   
+//     console.log(stringFormatada);
+//     console.log(b.value);
+//     //th:value="${{livro.dataPublicacao}}"
+// }
+
+
+// function meiaFunction() {
+
+//     var a = document.getElementById('tot');
+//     var b = document.getElementById('quantidaEmEstoque');
+//     var c = document.getElementById('precoTabelado');
+
+//     a.value = b.value * c.value;
+// }
+
+</script>
+
+   
+        
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary active" role="button" >SALVAR</button>
+        <a class="btn btn-danger" th:href="@{/}">Cancela</a>
+        </div>
+        </form>
+        </div>
+                   </div>
+                </div>
+                </div>
+</div>
+</div>
+        <script th:src="@{/assets/js/jquery.min.js}"></script>
+        <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+        <script th:src="@{/assets/js/bs-animation.js}"></script>
+        
+        <script
+		th:src="@{/webjars/jquery-maskmoney/3.0.2/dist/jquery.maskMoney.min.js}"></script>
+	<div th:replace="layout/fragmentos-layout :: mybookstore-js"></div>
+	
+        <span data-th-replace="layout/fragmentos-scripts :: maskmoney"></span>
+	<span data-th-replace="layout/fragmentos-scripts :: mybookstore-js"></span>
+</body>
+
+</html>

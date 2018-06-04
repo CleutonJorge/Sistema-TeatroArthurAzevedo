@@ -29,6 +29,18 @@ public class ConexaoComponente {
 			
 			throw new RuntimeException(e );
 		}
+		
+		/*try {
+			return DriverManager.getConnection("jdbc:mysql://localhost/booknet?useSSL=false", "root", "root" );
+		
+		} catch (SQLException e) {
+			LOG.error("Erro ao obter conexão JDBC");
+			LOG.error("Código de erro: " + e.getErrorCode() );
+			LOG.error("Causa do erro: " + e.getCause() );
+			LOG.error("Mensagem de erro: " + e.getMessage() );
+			
+			throw new RuntimeException(e );
+		}*/
 	}	
 
 

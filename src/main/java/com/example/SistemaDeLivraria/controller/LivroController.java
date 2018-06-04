@@ -74,7 +74,7 @@ public class LivroController {
 	@GetMapping("/form")
 	public String form(Model model, Livro livro) {
 		model.addAttribute("livro", livro);
-		return "livro/cadastro-livro";
+		return "livro/ingressos_create";
 	}
 
 	@ModelAttribute("editoras")
@@ -157,12 +157,12 @@ public class LivroController {
 
 	@PostMapping("/salva")
 	public String salva(@Validated Livro livro, Errors validacao, RedirectAttributes redirect,
-			MultipartFile imagemDoLivro, HttpServletRequest request) {
-
+			MultipartFile imagemDoLivro, HttpServletRequest request, Long detalhesImagem3) {
+		System.out.println("junio ="+detalhesImagem3);
 		if (validacao.hasErrors()) {
-			return "livro/cadastro-livro";
+			return "livro/ingressos_create";
 		}
-
+        
 		livro = livroService.salva(livro);
 
 		if (foiSelecionadaA(imagemDoLivro)) {
@@ -175,10 +175,16 @@ public class LivroController {
 			livro.setDetalhesImagem(imagemLivro);
 
 		}
+		System.out.println("junio ="+detalhesImagem3);
+		if(detalhesImagem3 != null){
+		DetalhesImagemLivro imagemLivro  = livroService.buscaPorImg(detalhesImagem3);
+		livro.setDetalhesImagem(imagemLivro);
+		}
+		
 		livroService.salva(livro);
 		LOG.info("Método salva() -- Livro " + livro.getTitulo() );
 
-		redirect.addFlashAttribute("mensagem_sucesso", "O livro foi Salvo com Sucesso");
+		redirect.addFlashAttribute("mensagem_sucesso", "Venda Realizada com Sucesso");
 		String rota = livro.ehNovo() ? "redirect:/livro/form" : "redirect:/livro/pesquisa";
 
 		return rota;
@@ -250,8 +256,9 @@ public class LivroController {
 
 	@PostMapping("/remove")
 	public ModelAndView remove(@ModelAttribute("id") Long livroId, RedirectAttributes redirect) {
+		System.out.println("LLLLLLLLLLL--------------------------------------");
 		livroService.excluirPelo(livroId);
-		redirect.addFlashAttribute("mensagem_sucesso", "O Livro foi Removido com Sucesso");
+		redirect.addFlashAttribute("mensagem_sucesso", "A Venda foi Removida com sucesso");
 
 		return this.pesquisa();
 
@@ -265,7 +272,7 @@ public class LivroController {
 
 		listaLivroId.forEach(id -> livroService.excluirPelo(id));
 
-		return "livros excluídos com sucesso";
+		return "Vendas excluídas com sucesso";
 
 	}
 
@@ -273,6 +280,13 @@ public class LivroController {
 	public List<CategoriaLivro> todasCategorias() {
 		return CategorialivroService.todas();
 	}
+	
+//	@ModelAttribute("buscarEventoId")
+//	public CategoriaLivro buscarEventoId() {
+//		long n = 2;
+//		System.out.println("PPPPPPPPPPPPPP ");
+//		return CategorialivroService.buscaPor(n);
+//	}
 
 	/*
 	 * @GetMapping("/pesquisa") public ModelAndView pesquisa() { ModelAndView
@@ -294,7 +308,7 @@ public class LivroController {
 		// Livro livro = livros.findOne(id);
 		Livro livro = livroService.buscaPor(id);
 
-		ModelAndView modelAndView = new ModelAndView("livro/view");
+		ModelAndView modelAndView = new ModelAndView("livro/ingressos_reader");
 		modelAndView.addObject("livro", livro);
 
 		return modelAndView;
@@ -334,15 +348,52 @@ public class LivroController {
 	// }
 
 	@GetMapping("{id}")
-	public ModelAndView edicao(@PathVariable Long id) {
-		Livro livro = livroService.buscaPor(id);
+	public ModelAndView edicao(@PathVariable Integer id, Livro livro) {
+		//model.addAttribute("livro", livro);
+		//Livro livro = livroService.buscaPor(id);
+		CategoriaLivro categorialivro = CategorialivroService.buscaPor(id);
 
-		ModelAndView modelAndView = new ModelAndView("livro/cadastro-livro");
-		modelAndView.addObject("livro", livro);
+		ModelAndView modelAndView = new ModelAndView("livro/ingressos_altered");
+		modelAndView.addObject("categorialivro", categorialivro);
+		//modelAndView.addObject("livro", livro);
+
 
 		return modelAndView;
 
 	}
+	
+	@GetMapping("ingressos/{id}")
+	public ModelAndView edicao3(@PathVariable Integer id, Livro livro) {
+		//model.addAttribute("livro", livro);
+		//Livro livro = livroService.buscaPor(id);
+		CategoriaLivro categorialivro = CategorialivroService.buscaPor(id);
+
+		ModelAndView modelAndView = new ModelAndView("livro/ingressos_create");
+		modelAndView.addObject("categorialivro", categorialivro);
+		//modelAndView.addObject("livro", livro);
+
+
+		return modelAndView;
+
+	}
+	
+//	@GetMapping("/form")
+//	public String form(Model model, Livro livro) {
+//		model.addAttribute("livro", livro);
+//		return "livro/ingressos_create";
+//	}
+//	
+//	@GetMapping("ingresso/{id}")
+//	public ModelAndView edicao2(@PathVariable Integer id) {
+//		//Livro livro = livroService.buscaPor(id);
+//		CategoriaLivro categorialivro = CategorialivroService.buscaPor(id);
+//
+//		ModelAndView modelAndView = new ModelAndView("livro/ingressos_create");
+//		modelAndView.addObject("livro", categorialivro);
+//
+//		return modelAndView;
+//
+//	}
 
 	@GetMapping("/{id}/detalhes")
 	public ModelAndView detalhes(@PathVariable("id") Long id) {

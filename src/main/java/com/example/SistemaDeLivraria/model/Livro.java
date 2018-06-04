@@ -37,8 +37,8 @@ public class Livro {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
-	@NotEmpty(message = "{livro.form.titulo.obrigatoria}")
-	@Size(min = 2, message = "{livro.form.titulo.tamanho}")
+	//@NotEmpty(message = "{livro.form.titulo.obrigatoria}")
+	//@Size(min = 2, message = "{livro.form.titulo.tamanho}")
 	private String titulo;
 
 	// @NotEmpty(message="{livro.form.autor.obrigatoria}")
@@ -59,7 +59,7 @@ public class Livro {
 	@Temporal(TemporalType.DATE)
 	private Date dataPublicacao;
 
-	@NotEmpty(message = "{livro.form.origem.obrigatoria}")
+	//@NotEmpty(message = "{livro.form.origem.obrigatoria}")
 	private String origem;
 	private String idioma;
 
