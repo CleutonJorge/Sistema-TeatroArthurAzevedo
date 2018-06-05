@@ -33,13 +33,13 @@
 	<title>
 		<band height="70" splitType="Stretch">
 			<staticText>
-				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="6f9c1004-6140-4588-9c4f-d75824835765"/>
+				<reportElement style="Title" x="146" y="0" width="263" height="33" uuid="6f9c1004-6140-4588-9c4f-d75824835765"/>
 				<textElement verticalAlignment="Middle"/>
-				<text><![CDATA[Editoras]]></text>
+				<text><![CDATA[Tipos de Ingressos]]></text>
 			</staticText>
 			<staticText>
-				<reportElement style="SubTitle" x="117" y="46" width="157" height="22" uuid="8e16dabd-2e54-471b-9652-83e1d55379ec"/>
-				<text><![CDATA[Editoras de Livros]]></text>
+				<reportElement style="SubTitle" x="117" y="46" width="363" height="22" uuid="8e16dabd-2e54-471b-9652-83e1d55379ec"/>
+				<text><![CDATA[Tipos de Ingressos do Teatro Arthur Azevedo]]></text>
 			</staticText>
 		</band>
 	</title>

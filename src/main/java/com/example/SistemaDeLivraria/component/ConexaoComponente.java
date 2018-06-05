@@ -19,8 +19,7 @@ public class ConexaoComponente {
 	public Connection obterConexaoJDBC() {
 		
 		try {
-			return DriverManager.getConnection("jdbc:mysql://us-cdbr-iron-east-05.cleardb.net/heroku_ac77cc65b91ce6b?reconnect=true", "b12e2c5b6d1bc3", "a5ece82f" );
-		
+			return DriverManager.getConnection("jdbc:mysql://b86e56554df6e3:565d1530@us-cdbr-iron-east-04.cleardb.net/heroku_7c4f250985cf99d?reconnect=true", "b12e2c5b6d1bc3", "a5ece82f" );
 		} catch (SQLException e) {
 			LOG.error("Erro ao obter conexão JDBC");
 			LOG.error("Código de erro: " + e.getErrorCode() );
@@ -31,7 +30,7 @@ public class ConexaoComponente {
 		}
 		
 		/*try {
-			return DriverManager.getConnection("jdbc:mysql://localhost/booknet?useSSL=false", "root", "root" );
+			return DriverManager.getConnection("jdbc:mysql://localhost/sistemataa?useSSL=false", "root", "root" );
 		
 		} catch (SQLException e) {
 			LOG.error("Erro ao obter conexão JDBC");

@@ -11,7 +11,7 @@
  <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
  <header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
     <div class=" col-md-16" data-bs-parallax-bg="true" data-th-src="@{/imagens/img-livro-indisponivel.jpg}" style="height:500px;background-image:url(&quot;/imagens/img-livro-indisponivel.jpg&quot;);background-position:center;background-size:cover;">
-    <img class=" col-md-12" alt="" data-bs-parallax-bg="true" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}" style="height:500px;weight:1000px;background-position:center;background-size:cover;">
+    <img th:if="${livro.temFotoCapa()== true}" class="col-md-12" alt="" data-bs-parallax-bg="true" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}" style="height:500px;weight:1000px;background-position:center;background-size:cover;">
     </div>
     <div class="features-clean">
         <div class="container">

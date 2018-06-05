@@ -43,18 +43,18 @@
 			<frame>
 				<reportElement mode="Opaque" x="-20" y="-20" width="595" height="92" backcolor="#006699" uuid="f929475e-8b19-4a04-98ed-b5590a25943d"/>
 				<staticText>
-					<reportElement x="20" y="20" width="234" height="43" forecolor="#FFFFFF" uuid="d019d72e-d900-4ade-baf0-0c1f9c181c78"/>
+					<reportElement x="20" y="20" width="300" height="43" forecolor="#FFFFFF" uuid="d019d72e-d900-4ade-baf0-0c1f9c181c78"/>
 					<textElement>
 						<font size="34" isBold="true"/>
 					</textElement>
-					<text><![CDATA[Categorias]]></text>
+					<text><![CDATA[Eventos do TAA]]></text>
 				</staticText>
 				<staticText>
-					<reportElement x="395" y="43" width="180" height="20" forecolor="#FFFFFF" uuid="c1050094-e111-4ec5-967b-e3d16d6d9d4f"/>
+					<reportElement x="297" y="60" width="298" height="20" forecolor="#FFFFFF" uuid="c1050094-e111-4ec5-967b-e3d16d6d9d4f"/>
 					<textElement textAlignment="Right">
 						<font size="14" isBold="false"/>
 					</textElement>
-					<text><![CDATA[Categorias de Livros]]></text>
+					<text><![CDATA[Eventos do Teatro Arthur Azevedo]]></text>
 				</staticText>
 			</frame>
 		</band>
@@ -79,7 +79,7 @@
 				<textElement textAlignment="Center">
 					<font size="14" isBold="true"/>
 				</textElement>
-				<text><![CDATA[nome da categoria]]></text>
+				<text><![CDATA[nome do Evento]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
