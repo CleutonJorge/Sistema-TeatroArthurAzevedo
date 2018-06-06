@@ -18,7 +18,7 @@ public class ConexaoComponente {
 	
 	public Connection obterConexaoJDBC() {
 		
-		try {
+	/*	try {
 			return DriverManager.getConnection("jdbc:mysql://b86e56554df6e3:565d1530@us-cdbr-iron-east-04.cleardb.net/heroku_7c4f250985cf99d?reconnect=true", "b86e56554df6e3", "565d1530" );
 		} catch (SQLException e) {
 			LOG.error("Erro ao obter conexão JDBC");
@@ -27,9 +27,9 @@ public class ConexaoComponente {
 			LOG.error("Mensagem de erro: " + e.getMessage() );
 			
 			throw new RuntimeException(e );
-		}
+		}*/
 		
-		/*try {
+		try {
 			return DriverManager.getConnection("jdbc:mysql://localhost/sistemataa?useSSL=false", "root", "root" );
 		
 		} catch (SQLException e) {
@@ -39,7 +39,7 @@ public class ConexaoComponente {
 			LOG.error("Mensagem de erro: " + e.getMessage() );
 			
 			throw new RuntimeException(e );
-		}*/
+		}
 	}	
 
 
