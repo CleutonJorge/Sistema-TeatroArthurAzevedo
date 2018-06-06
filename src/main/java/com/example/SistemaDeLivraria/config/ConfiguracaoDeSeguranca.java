@@ -31,6 +31,7 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 		    .antMatchers("/livro/form").hasRole("ADMIN")
+		    .antMatchers("/livro/ingressos/{id}").hasRole("ADMIN")
 		    .antMatchers("/categoria/form").hasRole("ADMIN")
 		    .antMatchers("/editora/form").hasRole("ADMIN")
 		    .antMatchers("/autor/form").hasRole("ADMIN")
