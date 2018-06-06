@@ -1,9 +1,27 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="utf-8"/>
+<html>
 
-    <title>myBookstore - Formulário de Login</title>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sistemataa</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Adamina">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bitter:400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700">
+    <link rel="stylesheet" href="assets/css/Article-List.css">
+    <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
+    <link rel="stylesheet" href="assets/css/Features-Clean.css">
+    <link rel="stylesheet" href="assets/css/Footer-Dark.css">
+    <link rel="stylesheet" href="assets/css/Header-Blue.css">
+    <link rel="stylesheet" href="assets/css/Header-Dark.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Dark.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    
+     <title>Sistema TAA - Formulário de Login</title>
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" 
@@ -12,43 +30,27 @@
     <!-- Custom styles for this template -->
     <link  th:href="@{/css/login.css}" rel="stylesheet" />
     <link  th:href="@{/css/style.css}" rel="stylesheet" />
-
-  </head>
+</head>
 
 <body>
-
-<div class="container" style="width:350px">
-
-      <form th:action="@{/login}" method="POST">
-        <h2 class="form-signin-heading">Acessar Sistema TAA</h2>
-        
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
-        
-        <!-- <label for="inputEmail" class="sr-only">Usuário</label> -->
-        <input type="text" id="inputUsername" name="username" 
-               class="form-control" placeholder="login"/>
-        
-        <!-- <label for="inputPassword" class="sr-only">Senha</label> -->
-        <input type="password" id="inputPassword" name="password" 
-               class="form-control" placeholder="Senha" style="margin-top:0.6rem" />
-        
-        <button class="btn btn-lg btn-primary btn-block" type="submit" style="margin-top:1rem">
-        	<span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Logar
-        </button>
-        
-        <div th:if="${#bools.isTrue(param.error)}" class="alert alert-danger" 
+    <div></div>
+    <div class="login-dark" style="background-image:url(&quot;assets/img/Teatro-arthur-azevedo2.jpg&quot;);">
+        <form th:action="@{/login}" method="post">
+            <h2 class="sr-only">Login Form</h2>
+            <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" >
+            <div class="illustration"><i class="icon ion-ios-locked-outline"></i></div>
+            <div class="form-group"><input class="form-control" type="text" id="inputUsername" name="username" placeholder="Login"></div>
+            <div class="form-group"><input class="form-control" type="password" id="inputPassword" name="password" placeholder="Senha"></div>
+             <div th:if="${#bools.isTrue(param.error)}" class="alert alert-danger" 
              role="alert" style="margin-top:1.5rem">Usuário ou Senha Inválida</div>
     
         <div th:if="${#bools.isTrue(param.logout)}" class="alert alert-info" 
              role="alert" style="margin-top:1.5rem">Logout realizado com sucesso</div>
-      
-      </form>
-	  <div class="login-help">
-	     <a href="#">Esqueceu a sua senha?</a>
-	  </div>
-
-    </div> <!-- /container -->
-
+            <div class="form-group"><button class="btn btn-primary btn-block" type="submit">Logar</button></div><a href="#" class="forgot">Esqueceu o email ou senha?</a></form>
+    </div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-animation.js"></script>
 </body>
 
 </html>
