@@ -77,6 +77,5 @@ public class ConfiguracaoDeSeguranca extends WebSecurityConfigurerAdapter {
 	                .and().withUser("user").password("user").roles("USER");
 	    }*/
 	
-
 }
 
