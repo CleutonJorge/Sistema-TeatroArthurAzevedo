@@ -19,7 +19,7 @@ public class ConexaoComponente {
 	public Connection obterConexaoJDBC() {
 		
 		try {
-			return DriverManager.getConnection("jdbc:mysql://b86e56554df6e3:565d1530@us-cdbr-iron-east-04.cleardb.net/heroku_7c4f250985cf99d?reconnect=true", "b86e56554df6e3", "565d1530" );
+			return DriverManager.getConnection("jdbc:mysql://b86e56554df6e3:us-cdbr-iron-east-04.cleardb.net/heroku_7c4f250985cf99d?reconnect=true", "b86e56554df6e3", "565d1530" );
 		} catch (SQLException e) {
 			LOG.error("Erro ao obter conexão JDBC");
 			LOG.error("Código de erro: " + e.getErrorCode() );
