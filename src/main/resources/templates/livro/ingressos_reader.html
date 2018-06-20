@@ -6,44 +6,201 @@
 
 
 <body>
+
  
  <head th:replace="layout/fragmentos-caixaExclusao :: caixa-exclusao"></head> 
- <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
+ <div  >
+ <div class="header-blue-disable" >
  <header th:replace="layout/fragmentos-layout :: barra-navegacao"></header>
-    <div class=" col-md-16" data-bs-parallax-bg="true" data-th-src="@{/imagens/img-livro-indisponivel.jpg}" style="height:500px;background-image:url(&quot;/imagens/img-livro-indisponivel.jpg&quot;);background-position:center;background-size:cover;">
-    <img th:if="${livro.temFotoCapa()== true}" class="col-md-12" alt="" data-bs-parallax-bg="true" data-th-src="@{|/${livro.detalhesImagem.fotoPath}|}" style="height:500px;weight:1000px;background-position:center;background-size:cover;">
+    <div id="tela" class=" col-md-16" data-bs-parallax-bg="true" th:if="${livro.temFotoCapa()== false}" style="height:500px;background-image:url(&quot;/imagens/img-livro-indisponivel.jpg&quot;);background-position:center;background-size:cover;">
     </div>
+    <div id="tela" class=" col-md-16" data-bs-parallax-bg="true" th:if="${livro.temFotoCapa()== true}"  th:style="'background-image:url(' + @{|/${livro.detalhesImagem.fotoPath2}|} + ');height:500px;background-position:center;background-size:cover;'" >
+    </div>
+    
     <div class="features-clean">
         <div class="container">
             <div class="intro">
                 <h2 class="text-center" th:text="${livro.categorias}">Evento : Tirulipa</h2>
                 <p class="text-center">Informaçoes da Venda. </p>
             </div>
+            
             <div class="row features">
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-money icon"></i>
-                    <h3  class="name">Preço&nbsp;</h3>
-                    <p class="description" th:text="|R$ ${livro.precoTabelado}|">R$ : 60&nbsp;</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-clock-o icon"></i>
-                    <h3 class="name">Data</h3>
+            
+                            <div class="col-sm-8 col-lg-4 item"><i class="fa fa-clock-o icon"></i>
+                    <h3 class="name">Data da Venda</h3>
                     <p class="description" th:text="${{livro.dataPublicacao}}">13 de MAIO - 2018 - 21H DOMINGO</p>
                 </div>
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-list-alt icon"></i>
-                    <h3 class="name">Tipo de Ingresso</h3>
-                    <p class="description" th:text="${livro.editora}">GALERIA - MEIA ENTRADA</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-cubes icon"></i>
-                    <h3 class="name">Quantidade</h3>
-                    <p class="description" th:text="${livro.quantidaEmEstoque}">3</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-text-width icon"></i>
-                    <h3 class="name">Total</h3>
-                    <p class="description" th:text="${livro.precoTabelado} * ${livro.quantidaEmEstoque}">R$ : 90&nbsp;</p>
-                </div>
-                <div class="col-sm-6 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
+                
+                                <div class="col-sm-8 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
                     <h3 class="name">Descrição</h3>
                     <p class="description" th:text="${livro.descricao}">Ingresso comprado no caixa 2 da bilheteria do teatro</p>
                 </div>
+                
+                  <div class="col-sm-8 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
+                    <h3 class="name">Valor Total</h3>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteira * livro.quantidaEmEstoque + livro.categorias[0].meia * livro.qtdmeiaP +
+                    livro.categorias[0].inteiraF * livro.qtdinteiraF + livro.categorias[0].meiaF * livro.qtdmeiaF +
+                    livro.categorias[0].inteiraC * livro.qtdinteiraC + livro.categorias[0].meiaC * livro.qtdmeiaC +
+                    livro.categorias[0].inteiraB * livro.qtdinteiraB + livro.categorias[0].meiaB * livro.qtdmeiaB +
+                    livro.categorias[0].inteiraG * livro.qtdinteiraG + livro.categorias[0].meiaG * livro.qtdmeiaG}|">Ingresso comprado no caixa 2 da bilheteria do teatro</p>
+                </div>
+            
+             <div class="col-sm-4 col-lg-2 item"><i class="fa fa-tags icon"></i>
+                    <h3 class="name">Setor(es)</h3>
+<!--                     <p class="description" th:text="${livro.autores}">13 de MAIO - 2018 - 21H DOMINGO</p> -->
+                    <p class="description" >Plateia</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >Frisa</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >Camarote</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >Balcao</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >Galeria</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                </div>
+                
+                <div class="col-sm-4 col-lg-2 item"><i class="fa fa-list-alt icon"></i>
+                    <h3 class="name">Ingresso</h3>
+<!--                     <p class="description" th:text="${livro.editora}">GALERIA - MEIA ENTRADA</p> -->
+                    <p class="description" >Inteira</p>
+                    <p class="description" >Meia Entrada</p>
+                    <p class="description" >Cortesia</p>
+                    <p class="description" >.</p>
+                    
+                    <p class="description" >Inteira</p>
+                    <p class="description" >Meia Entrada</p>
+                    <p class="description" >Cortesia</p>
+                    <p class="description" >.</p>
+                    
+                    <p class="description" >Inteira</p>
+                    <p class="description" >Meia Entrada</p>
+                    <p class="description" >Cortesia</p>
+                    <p class="description" >.</p>
+                    
+                    <p class="description" >Inteira</p>
+                    <p class="description" >Meia Entrada</p>
+                    <p class="description" >Cortesia</p>
+                    <p class="description" >.</p>
+                    
+                    <p class="description" >Inteira</p>
+                    <p class="description" >Meia Entrada</p>
+                    <p class="description" >Cortesia</p>
+                </div>
+                
+                <div class="col-sm-4 col-lg-2 item"><i class="fa fa-money icon"></i>
+                    <h3  class="name">Preço&nbsp;</h3>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteira}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meia}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraF}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaF}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraC}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaC}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraB}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaB}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraG}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaG}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                </div>
+<!--                 <div class="col-sm-4 col-lg-2 item"><i class="fa fa-clock-o icon"></i> -->
+<!--                     <h3 class="name">Data</h3> -->
+<!--                     <p class="description" th:text="${{livro.dataPublicacao}}">13 de MAIO - 2018 - 21H DOMINGO</p> -->
+<!--                 </div> -->
+
+                
+                <div class="col-sm-4 col-lg-2 item"><i class="fa fa-cubes icon"></i>
+                    <h3 class="name">Quantidade</h3>
+                    <p class="description" th:text="${livro.quantidaEmEstoque}">3</p>
+                    <p class="description" th:text="${livro.qtdmeiaP}">3</p>
+                    <p class="description" th:text="${livro.qtdcortesiaP}">3</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="${livro.qtdinteiraF}">3</p>
+                    <p class="description" th:text="${livro.qtdmeiaF}">3</p>
+                    <p class="description" th:text="${livro.qtdcortesiaF}">3</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="${livro.qtdinteiraC}">3</p>
+                    <p class="description" th:text="${livro.qtdmeiaC}">3</p>
+                    <p class="description" th:text="${livro.qtdcortesiaC}">3</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="${livro.qtdinteiraB}">3</p>
+                    <p class="description" th:text="${livro.qtdmeiaB}">3</p>
+                    <p class="description" th:text="${livro.qtdcortesiaB}">3</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="${livro.qtdinteiraG}">3</p>
+                    <p class="description" th:text="${livro.qtdmeiaG}">3</p>
+                    <p class="description" th:text="${livro.qtdcortesiaG}">3</p>
+                </div>
+                
+                  <div class="col-sm-4 col-lg-2 item"><i class="fa fa-braille icon"></i>
+                    <h3 class="name">Locais</h3>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="| ${setor.identificacao}|" th:if="${setor.setor} == 1" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="." th:unless="${setor.setor} == 1" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="| ${setor.identificacao}|" th:if="${setor.setor} == 2" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="." th:unless="${setor.setor} == 2" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="| ${setor.identificacao}|" th:if="${setor.setor} == 3" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="." th:unless="${setor.setor} == 3" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="| ${setor.identificacao}|" th:if="${setor.setor} == 4" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="." th:unless="${setor.setor} == 4" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <p class="description" >.</p>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="| ${setor.identificacao}|" th:if="${setor.setor} == 5" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                    <a class="description" th:each="setor : ${livro.setores}" th:text="." th:unless="${setor.setor} == 5" >13 de MAIO - 2018 - 21H DOMINGO</a>
+                </div>
+                
+                <div class="col-sm-4 col-lg-2 item"><i class="fa fa-text-width icon"></i>
+                    <h3 class="name">Total</h3>
+<!--                     <p class="description" th:text="${livro.precoTabelado} * ${livro.quantidaEmEstoque}">R$ : 90&nbsp;</p> -->
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteira * livro.quantidaEmEstoque} |">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meia * livro.qtdmeiaP}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraF * livro.qtdinteiraF}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaF * livro.qtdmeiaF}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraC * livro.qtdinteiraC}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaC * livro.qtdmeiaC}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraB * livro.qtdinteiraB}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaB * livro.qtdmeiaB}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                    <p class="description" >.</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].inteiraG * livro.qtdinteiraG}|">R$ : &nbsp;</p>
+                    <p class="description" th:text="|R$ ${livro.categorias[0].meiaG * livro.qtdmeiaG}|">R$ : &nbsp;</p>
+                    <p class="description" >R$ 0 &nbsp;</p>
+                </div>
+<!--                 <div class="col-sm-4 col-lg-2 item"><i class="fa fa-info-circle icon"></i> -->
+<!--                     <h3 class="name">Descrição</h3> -->
+<!--                     <p class="description" th:text="${livro.descricao}">Ingresso comprado no caixa 2 da bilheteria do teatro</p> -->
+<!--                 </div> -->
                 
                 <div class="col-md-12">
 			<a th:href="@{/livro/pesquisa}" class="btn btn-sm"> <span
@@ -63,7 +220,7 @@
     </div>
 	   <script th:src="@{/assets/js/jquery.min.js}"></script>
         <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
-<!--         <script th:src="@{/assets/js/bs-animation.js}"></script> -->
+        <script th:src="@{/assets/js/bs-animation.js}"></script>
 	    
 	    <div th:replace="layout/fragmentos-layout :: scripts-js"></div>
 

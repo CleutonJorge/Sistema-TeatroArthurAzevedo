@@ -26,7 +26,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import com.example.SistemaDeLivraria.controller.util.ArquivoUpload;
 import com.example.SistemaDeLivraria.model.CategoriaLivro;
 import com.example.SistemaDeLivraria.model.DetalhesImagemLivro;
-import com.example.SistemaDeLivraria.model.Editora;
 import com.example.SistemaDeLivraria.service.CategoriaLivroService;
 
 @Controller

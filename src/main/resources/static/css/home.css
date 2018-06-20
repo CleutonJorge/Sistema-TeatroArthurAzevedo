@@ -155,3 +155,14 @@ span{
 .corBackMain{
 	    background: whitesmoke
 }
+
+li div {
+display:table-cell;
+vertical-align:middle;
+width:700px;
+}
+
+ul {
+    display: flex;
+    align-items: center;
+}

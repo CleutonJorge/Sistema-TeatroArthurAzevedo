@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<div th:fragment="caixa-setores">
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="modals">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Selecione o(s) local(is) na Plateia</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+             
+             
+             <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoress}" class=""><input disabled th:if="${setor.id} == 1" class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" 
+											th:value="${setor.id}" /></div>
+												
+										
+									</div>
+									
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetores}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresb}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresc}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresd}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetorese}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresf}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresg}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresh}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresi}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresj}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresk}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresl}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()" id="plateia"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline ">
+										<div th:each="setor : ${todosSetoresm}" class="">
+										<input class="form-check-input" autocomplete="off"  id="plateia"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar()"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									
+            </div>
+            <div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" type="button">Confirmar</button></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div th:fragment="caixa-setoresFrisa">
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="modalsf">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Selecione a(s) Cabine(s) na Frisa</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa0102}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa0305}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa0608}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa0910}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa1112}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa1314}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa1516}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa1718}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa1920}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoreFrisa2122}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar2()" id="frisa"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+							
+									
+									
+            </div>
+            <div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" type="button">Confirmar</button></div>
+        </div>
+    </div>
+</div>
+
+</div>
+
+<div th:fragment="caixa-setoresCamarote">
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="modalsc">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Selecione a(s) Cabine(s) no Camarote</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote0103}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote0405}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote0607}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote0809}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote1011}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote1213}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote1415}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote1617}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote1819}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresCamarote20ECortesias}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar3()" id="camarote"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+							
+									
+									
+            </div>
+            <div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" type="button">Confirmar</button></div>
+        </div>
+    </div>
+</div>
+</div>
+
+
+<div th:fragment="caixa-setoresBalcao">
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="modalsb">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Selecione a(s) Cabine(s) no Balcao</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao0102}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao0304}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao0506}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao0708}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao0910}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao1112}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao1314}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao1516}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao1718}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao1920}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresBalcao2122}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar4()" id="balcao"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+							
+									
+									
+            </div>
+            <div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" type="button">Confirmar</button></div>
+        </div>
+    </div>
+</div>
+</div>
+
+<div th:fragment="caixa-setoresGaleria">
+	
+	<div role="dialog" tabindex="-1" class="modal fade" id="modalsg">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Selecione a(s) Cabine(s) na Galeria</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+            <div class="modal-body">
+                <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria0102}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria0304}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									 <div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria0506}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria0708}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria0910}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria1112}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria1314}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria1516}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria1718}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria1920}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+									<div class="form-check form-check-inline">
+										<div th:each="setor : ${todosSetoresGaleria2122}" class=""><input class="form-check-input"
+											type="checkbox"  th:field="${livro.setores}" onclick="verificar5()" id="galeria"
+											th:value="${setor.id}" />&nbsp; <a  
+											th:for="${#ids.prev('setores')}" class="small form-check-label"
+											tabIndex="-1" th:text="${setor.identificacao}">Nome
+												Categoria </a></div>
+												
+										
+									</div>
+									
+							
+									
+									
+            </div>
+            <div class="modal-footer"><button class="btn btn-primary" data-dismiss="modal" type="button">Confirmar</button></div>
+        </div>
+    </div>
+</div>
+</div>
+</html>

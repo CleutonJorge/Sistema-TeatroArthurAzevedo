@@ -99,6 +99,14 @@ public class DetalhesImagemLivro implements Serializable {
 		// return this.imagemPath + "/" + this.nomeArquivo;
 		return this.imagemPath + File.separator + this.nomeArquivo;
 	}
+	
+	public String getFotoPath2() {
+		// return this.imagemPath + "/" + this.nomeArquivo;
+		String fotoEvento = this.imagemPath + File.separator + this.nomeArquivo;
+		fotoEvento = fotoEvento.replace("\\", "/");
+		return fotoEvento;
+		//return this.imagemPath + File.separator + this.nomeArquivo;
+	}
 
 	public String getRealPathComNomeDoArquivo() {
 		return this.realPath + File.separator + this.nomeArquivo;

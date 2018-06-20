@@ -21,7 +21,6 @@
 
 </head>
 
-
 <body>
     <div>
         <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
@@ -56,29 +55,92 @@
                 <p class="text-center">PROGRAMAÇÃO - MAIO 2018</p>
             </div>
             <div class="row articles">
-                <div th:each="categorialivro : ${categorialivros}" class="col-sm-6 col-md-4 item"><a th:href="@{/livro/ingressos/{id}(id=${categorialivro.id})}"><img class="img-fluid"
-									th:if="${categorialivro.temFotoCapa()== true}"
-									data-th-src="@{|/${categorialivro.detalhesImagem.fotoPath}|}"
-									alt="Foto do Livro" height="60px" /> <img class="img-fluid"
+                <div th:each="categorialivro : ${categorialivros}" class="col-sm-6 col-md-4 item"><figure class="snip1527">
+  <div class="image" ><img th:if="${categorialivro.temFotoCapa()== true}" class="img-fluid"
+									data-th-src="@{|/${categorialivro.detalhesImagem.fotoPath}|}" alt="pr-sample23" />
+									<img
 									th:if="${categorialivro.temFotoCapa() == false}"
 									data-th-src="@{/imagens/img-livro-indisponivel.jpg}"
-									alt="Foto do Livro" height="60px" /></a>
+									alt="Foto do Livro" class="img-fluid" /></div>
+  <figcaption>
+    <div class="date"><span class="day" >28</span><span class="month">Oct</span></div>
+    <h3 th:text="${categorialivro.nomeCategoria}">The World Ended Yesterday</h3>
+    <p >
+
+      
+    </p>
+  </figcaption>
+  <a th:href="@{/livro/ingressos/{id}(id=${categorialivro.id})}"></a>
+</figure>
                     <h3 th:text="${categorialivro.nomeCategoria}" class="name">TIRULIPA</h3>
+                    
                     <p th:text="${categorialivro.descricao}" class="description"><br>Nesta Nova Turnê, o grande Humorista TIRULLIPA além de comemorar seus vinte anos de carreira com um grande e inovador espetáculo, ele trará ao palco histórias que relembram sua trajetória, um show que ficará na memória.<strong>Produção:&nbsp;</strong>Moraes
                         Junior Produções<strong>Ingressos</strong>:&nbsp;PLATEIA e FRISA: R$ 100,00 (R$ 50,00 meia entrada)CAMAROTE: R$ 80,00 (R$ 40,00 meia entrada) BALCÃO: R$ 60,00 (R$ 30,00 meia entrada) GALERIA: R$ 40,00 (R$ 20,00 meia entrada).<strong>Classificação</strong>:
                         14 anos<strong>Duração</strong>: 90 minutos<br><br><strong>Dia 11 (sexta) às 21hDia 12 (sábado) às 18:30hDia 12 (sábado) às 21h</strong><br><br></p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div>
-<!--                 <div -->
-<!--                     class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/GERAL-8.jpg"></a> -->
-<!--                     <h3 class="name">PÃO COM OVO</h3> -->
-<!--                     <p class="description"><br>Apresentação beneficente em prol da Associação Carente São Benedito do Bairro de Fátima.<br><strong>Produção: CEMAR Ingressos</strong>:&nbsp;PLATEIA e FRISA: R$ 60,00 (R$ 30,00 meia entrada)CAMAROTE: R$ 50,00 (R$ 25,00 meia entrada) -->
-<!--                         BALCÃO e GALERIA: R$ 40,00 (R$ 15,00 meia entrada)<strong>Classificação</strong>: 12 anos<strong>Duração</strong>: 90 minutos<br><br><strong>Dia 13 (domingo) às 18h</strong><br><br></p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div> -->
-<!--             <div -->
-<!--                 class="col-sm-6 col-md-4 item"><a href="#"><img class="img-fluid" src="assets/img/DQIILBWW4AEt8Eo.jpg"></a> -->
-<!--                 <h3 class="name">JOÃO DO VALE - O MUSICAL</h3> -->
-<!--                 <p class="description"><br><br>Vicente Melo vai interpretar João do Vale no espetáculo produzido desde o início do ano que promete marcar em grande estilo a reinauguração do Teatro Arthur Azevedo dia 08 de Dezembro&nbsp;<br><br></p><a href="#" class="action"><i class="fa fa-arrow-circle-right"></i></a></div> -->
+
+   
+   
     </div>
     </div>
     </div>
+    
+<!--     <div th:each="categorialivro : ${categorialivros}"> -->
+<!--     <figure class="snip1527"> -->
+<!--   <div class="image" ><img th:if="${categorialivro.temFotoCapa()== true}" -->
+<!-- 									data-th-src="@{|/${categorialivro.detalhesImagem.fotoPath}|}" alt="pr-sample23" /> -->
+<!-- 									<img -->
+<!-- 									th:if="${categorialivro.temFotoCapa() == false}" -->
+<!-- 									data-th-src="@{/imagens/img-livro-indisponivel.jpg}" -->
+<!-- 									alt="Foto do Livro" height="60px" /></div> -->
+<!--   <figcaption> -->
+<!--     <div class="date"><span class="day">28</span><span class="month">Oct</span></div> -->
+<!--     <h3 th:text="${categorialivro.nomeCategoria}">The World Ended Yesterday</h3> -->
+<!--     <p > -->
+
+      
+<!--     </p> -->
+<!--   </figcaption> -->
+<!--   <a th:href="@{/livro/ingressos/{id}(id=${categorialivro.id})}"></a> -->
+<!-- </figure> -->
+
+<!--     <script src="assets/js/jquery.min.js"></script> -->
+<!--     <script src="assets/bootstrap/js/bootstrap.min.js"></script> -->
+<!--     <script src="assets/js/bs-animation.js"></script> -->
+<!-- </div> -->
+
+
+
+
+
+
+<!-- <div class="article-list"> -->
+<!--         <div class="container"> -->
+<!--             <div class="intro"> -->
+<!--                 <h2 class="text-center">Espetaculos</h2> -->
+<!--                 <p class="text-center">PROGRAMAÇÃO - MAIO 2018</p> -->
+<!--             </div> -->
+<!--             <div class="row articles"> -->
+<!--                 <div th:each="categorialivro : ${categorialivros}" class="col-sm-6 col-md-4 item"><a th:href="@{/livro/ingressos/{id}(id=${categorialivro.id})}"><img class="img-fluid" th:if="${categorialivro.temFotoCapa()== true}" -->
+<!-- 									data-th-src="@{|/${categorialivro.detalhesImagem.fotoPath}|}" alt="pr-sample23" /> -->
+<!-- 									<img class="img-fluid" -->
+<!-- 									th:if="${categorialivro.temFotoCapa() == false}" -->
+<!-- 									data-th-src="@{/imagens/img-livro-indisponivel.jpg}" -->
+<!-- 									alt="Foto do Livro"/></a> -->
+<!--                     <h3 class="name" th:text="${categorialivro.nomeCategoria}">TIRULIPA</h3> -->
+<!--                     <p class="description" th:text="${categorialivro.descricao}"><br>Nesta Nova Turnê, o grande Humorista TIRULLIPA além de comemorar seus vinte anos de carreira com um grande e inovador espetáculo, ele trará ao palco histórias que relembram sua trajetória, um show que ficará na memória.<strong>Produção:&nbsp;</strong>Moraes -->
+<!--                         Junior Produções<strong>Ingressos</strong>:&nbsp;PLATEIA e FRISA: R$ 100,00 (R$ 50,00 meia entrada)CAMAROTE: R$ 80,00 (R$ 40,00 meia entrada) BALCÃO: R$ 60,00 (R$ 30,00 meia entrada) GALERIA: R$ 40,00 (R$ 20,00 meia entrada).<strong>Classificação</strong>: -->
+<!--                         14 anos<strong>Duração</strong>: 90 minutos<br><br><strong>Dia 11 (sexta) às 21hDia 12 (sábado) às 18:30hDia 12 (sábado) às 21h</strong><br><br></p><a th:href="@{/livro/ingressos/{id}(id=${categorialivro.id})}" class="action"><i class="fa fa-arrow-circle-right"></i></a></div> -->
+
+<!--     </div> -->
+<!--     </div> -->
+<!--     </div> -->
+    
+    
+    
+    
+    
+    
+    
     <div class="footer-dark">
         <footer>
             <div class="container">
@@ -110,8 +172,10 @@
             </div>
         </footer>
     </div>
-    <script src="assets/js/jquery.min.js"></script>
-    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="assets/js/bs-animation.js"></script>
+    <script th:src="@{/assets/js/jquery.min.js}"></script>
+    <script th:src="@{/assets/bootstrap/js/bootstrap.min.js}"></script>
+    <script th:src="@{/assets/js/bs-animation.js}"></script>
 </body>
+
+
 </html>

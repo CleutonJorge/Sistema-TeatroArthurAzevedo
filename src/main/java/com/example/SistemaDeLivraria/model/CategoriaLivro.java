@@ -1,14 +1,22 @@
 package com.example.SistemaDeLivraria.model;
 
+import java.math.BigDecimal;
+import java.util.Date;
+
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.NumberFormat;
 
 @Entity
 public class CategoriaLivro {
@@ -21,13 +29,136 @@ public class CategoriaLivro {
 	@Size(min = 2, message = "{livro.form.titulo.tamanho}")
 	private String nomeCategoria;
 	
-	private int inteira;
-	private int meia;
+	@NotNull(message = "{livro.form.data.obrigatoria}")
+	@DateTimeFormat(pattern = "dd/MM/yyyy")
+	@Temporal(TemporalType.DATE)
+	private Date dataPublicacao;
+	
+	public Date getDataPublicacao() {
+		return dataPublicacao;
+	}
+
+	public void setDataPublicacao(Date dataPublicacao) {
+		this.dataPublicacao = dataPublicacao;
+	}
+
+	
+	private BigDecimal inteira;
+
+	private BigDecimal meia;
+	
+	
+	private BigDecimal inteiraF;
+	
+	private BigDecimal meiaF;
+	
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal inteiraC;
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal meiaC;
+	
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal inteiraB;
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal meiaB;
+	
+	public BigDecimal getInteiraF() {
+		return inteiraF;
+	}
+
+	public void setInteiraF(BigDecimal inteiraF) {
+		this.inteiraF = inteiraF;
+	}
+
+	public BigDecimal getMeiaF() {
+		return meiaF;
+	}
+
+	public void setMeiaF(BigDecimal meiaF) {
+		this.meiaF = meiaF;
+	}
+
+	public BigDecimal getInteiraC() {
+		return inteiraC;
+	}
+
+	public void setInteiraC(BigDecimal inteiraC) {
+		this.inteiraC = inteiraC;
+	}
+
+	public BigDecimal getMeiaC() {
+		return meiaC;
+	}
+
+	public void setMeiaC(BigDecimal meiaC) {
+		this.meiaC = meiaC;
+	}
+
+	public BigDecimal getInteiraB() {
+		return inteiraB;
+	}
+
+	public void setInteiraB(BigDecimal inteiraB) {
+		this.inteiraB = inteiraB;
+	}
+
+	public BigDecimal getMeiaB() {
+		return meiaB;
+	}
+
+	public void setMeiaB(BigDecimal meiaB) {
+		this.meiaB = meiaB;
+	}
+
+	public BigDecimal getInteiraG() {
+		return inteiraG;
+	}
+
+	public void setInteiraG(BigDecimal inteiraG) {
+		this.inteiraG = inteiraG;
+	}
+
+	public BigDecimal getMeiaG() {
+		return meiaG;
+	}
+
+	public void setMeiaG(BigDecimal meiaG) {
+		this.meiaG = meiaG;
+	}
+
+	public String getCaminhoFotoLivro() {
+		return caminhoFotoLivro;
+	}
+
+	public void setCaminhoFotoLivro(String caminhoFotoLivro) {
+		this.caminhoFotoLivro = caminhoFotoLivro;
+	}
+
+	public void setInteira(BigDecimal inteira) {
+		this.inteira = inteira;
+	}
+
+	public void setMeia(BigDecimal meia) {
+		this.meia = meia;
+	}
+
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal inteiraG;
+	@NumberFormat(pattern = "#,##0.00")
+	private BigDecimal meiaG;
+	
 	private String descricao;
 	private String fotoPath;
 	private String caminhoFotoLivro;
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private DetalhesImagemLivro detalhesImagem;
+	
+	public Long temCapa(){
+		if(detalhesImagem != null)
+		return detalhesImagem.getId();
+		else
+			return (long) -1;
+	}
 	
 	public String getFotoPath() {
 		return fotoPath;
@@ -45,21 +176,19 @@ public class CategoriaLivro {
 		this.descricao = descricao;
 	}
 
-	public int getInteira() {
+	public BigDecimal getInteira() {
 		return inteira;
 	}
 
-	public void setInteira(int inteira) {
-		this.inteira = inteira;
-	}
 
-	public int getMeia() {
+
+	public BigDecimal getMeia() {
 		return meia;
 	}
 
-	public void setMeia(int meia) {
-		this.meia = meia;
-	}
+//	public void setMeia(int meia) {
+//		this.meia = meia;
+//	}
 
 	public Integer getId() {
 		return id;

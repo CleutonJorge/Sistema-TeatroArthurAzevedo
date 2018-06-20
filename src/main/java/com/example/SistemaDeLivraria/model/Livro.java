@@ -48,6 +48,11 @@ public class Livro {
 	@NotEmpty(message = "{livro.form.autores.obrigatoria}")
 	@ManyToMany
 	private List<AutorLivro> autores;
+	
+	
+	@ManyToMany
+	private List<Setor> setores;
+	
 
     @NotNull(message="{livro.form.editora.obrigatoria}")
 	// @Size(min=2, message="{livro.form.editora.tamanho}")
@@ -77,6 +82,14 @@ public class Livro {
 	private double peso;
 	private String caminhoFotoLivro;
 
+	public List<Setor> getSetores() {
+		return setores;
+	}
+
+	public void setSetores(List<Setor> setores) {
+		this.setores = setores;
+	}
+
 	@NumberFormat(pattern = "#,##0.00")
 	private BigDecimal precoTabelado;
 
@@ -92,17 +105,110 @@ public class Livro {
 	private boolean ativo = true;
 	private int venda_aluguel;
 
-	@NotEmpty(message = "{livro.form.descricao.obrigatoria}")
+	//@NotEmpty(message = "{livro.form.descricao.obrigatoria}")
 	@Column(columnDefinition = "text")
 	private String descricao;
 
-	@NotNull(message = "{livro.form.qtdEstoque.obrigatoria}")
+	//@NotNull(message = "{livro.form.qtdEstoque.obrigatoria}")
 	private int quantidaEmEstoque;
+	private int qtdmeiaP;
+	private int qtdcortesiaP;
+	
+	private int qtdinteiraF;
+	private int qtdmeiaF;
+	private int qtdcortesiaF;
+	
+	private int qtdinteiraC;
+	private int qtdmeiaC;
+	private int qtdcortesiaC;
+	
+	private int qtdinteiraB;
+	private int qtdmeiaB;
+	private int qtdcortesiaB;
+	
+	private int qtdinteiraG;
+	private int qtdmeiaG;
+	private int qtdcortesiaG;
+	
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private DetalhesImagemLivro detalhesImagem;
 
 	private String fotoPath;
+	
+	
+
+	public int getQtdinteiraB() {
+		return qtdinteiraB;
+	}
+
+	public void setQtdinteiraB(int qtdinteiraB) {
+		this.qtdinteiraB = qtdinteiraB;
+	}
+
+	public int getQtdmeiaB() {
+		return qtdmeiaB;
+	}
+
+	public void setQtdmeiaB(int qtdmeiaB) {
+		this.qtdmeiaB = qtdmeiaB;
+	}
+
+	public int getQtdcortesiaB() {
+		return qtdcortesiaB;
+	}
+
+	public void setQtdcortesiaB(int qtdcortesiaB) {
+		this.qtdcortesiaB = qtdcortesiaB;
+	}
+
+	public int getQtdinteiraG() {
+		return qtdinteiraG;
+	}
+
+	public void setQtdinteiraG(int qtdinteiraG) {
+		this.qtdinteiraG = qtdinteiraG;
+	}
+
+	public int getQtdmeiaG() {
+		return qtdmeiaG;
+	}
+
+	public void setQtdmeiaG(int qtdmeiaG) {
+		this.qtdmeiaG = qtdmeiaG;
+	}
+
+	public int getQtdcortesiaG() {
+		return qtdcortesiaG;
+	}
+
+	public void setQtdcortesiaG(int qtdcortesiaG) {
+		this.qtdcortesiaG = qtdcortesiaG;
+	}
+
+	public int getQtdinteiraC() {
+		return qtdinteiraC;
+	}
+
+	public void setQtdinteiraC(int qtdinteiraC) {
+		this.qtdinteiraC = qtdinteiraC;
+	}
+
+	public int getQtdmeiaC() {
+		return qtdmeiaC;
+	}
+
+	public void setQtdmeiaC(int qtdmeiaC) {
+		this.qtdmeiaC = qtdmeiaC;
+	}
+
+	public int getQtdcortesiaC() {
+		return qtdcortesiaC;
+	}
+
+	public void setQtdcortesiaC(int qtdcortesiaC) {
+		this.qtdcortesiaC = qtdcortesiaC;
+	}
 
 	public boolean igualdade(int comparar) {
 		// System.out.println(comparar);
@@ -111,6 +217,48 @@ public class Livro {
 			return true;
 		else
 			return false;
+	}
+	
+	
+
+	public int getQtdinteiraF() {
+		return qtdinteiraF;
+	}
+
+	public void setQtdinteiraF(int qtdinteiraF) {
+		this.qtdinteiraF = qtdinteiraF;
+	}
+
+	public int getQtdmeiaP() {
+		return qtdmeiaP;
+	}
+
+	public void setQtdmeiaP(int qtdmeiaP) {
+		this.qtdmeiaP = qtdmeiaP;
+	}
+
+	public int getQtdcortesiaP() {
+		return qtdcortesiaP;
+	}
+
+	public void setQtdcortesiaP(int qtdcortesiaP) {
+		this.qtdcortesiaP = qtdcortesiaP;
+	}
+
+	public int getQtdmeiaF() {
+		return qtdmeiaF;
+	}
+
+	public void setQtdmeiaF(int qtdmeiaF) {
+		this.qtdmeiaF = qtdmeiaF;
+	}
+
+	public int getQtdcortesiaF() {
+		return qtdcortesiaF;
+	}
+
+	public void setQtdcortesiaF(int qtdcortesiaF) {
+		this.qtdcortesiaF = qtdcortesiaF;
 	}
 
 	@Transient

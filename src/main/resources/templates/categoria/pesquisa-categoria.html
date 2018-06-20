@@ -10,6 +10,7 @@
 
 
 	<!-- conteúdo principal -->
+	
 	<main class="container">
 	<section class="row">
 		<div class="panel panel-default">
@@ -38,6 +39,7 @@
 								<th class="text-center col-md-1">IMAGEM</th>
 								<th class="text-center col-md-1">ID</th>
 								<th>____________________Evento____________________</th>
+								<th>______DATA_____</th>
 								<th class="text-center col-md-3">____________________Ações____________________</th>
 							</tr>
 						</thead>
@@ -56,7 +58,8 @@
 									data-th-src="@{/imagens/img-livro-indisponivel.jpg}"
 									alt="Foto do Livro" height="60px" /></td>
 								<td class="text-center col-sm-1" th:text="${categorialivro.id}"></td>
-								<td class="text-left" th:text="${categorialivro.nomeCategoria}"></td>
+								<td class="text-center" th:text="${categorialivro.nomeCategoria}"></td>
+								<td class="text-center" th:text="${categorialivro.dataPublicacao}"></td>
 								<td class="col-sm-4 text-center">
 									<!-- 								<a th:href="@{/livro/visualisa/{id}(id=${livro.id})}" class="btn btn-sm"> <span -->
 									<!-- 										class="btn btn-success">visualisar</span> </a> -->
@@ -78,6 +81,7 @@
 							</tr>
 
 						</tbody>
+						
 						<tr>
 							<td colspan="9">
 								<button th:id="excluir-livros" class="btn btn-danger btn-sm">Excluir

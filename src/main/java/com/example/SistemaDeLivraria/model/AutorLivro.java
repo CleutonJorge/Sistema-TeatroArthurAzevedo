@@ -18,6 +18,34 @@ public class AutorLivro {
 	@NotEmpty(message = "{livro.form.titulo.obrigatoria}")
 	@Size(min = 2, message = "{livro.form.titulo.tamanho}")
 	private String nomeAutor;
+	
+	private String identificacao;
+	private int numero;
+    private int setor;
+	
+	public int getSetor() {
+		return setor;
+	}
+
+	public void setSetor(int setor) {
+		this.setor = setor;
+	}
+
+	public String getIdentificacao() {
+		return identificacao;
+	}
+
+	public void setIdentificacao(String identificacao) {
+		this.identificacao = identificacao;
+	}
+
+	public int getNumero() {
+		return numero;
+	}
+
+	public void setNumero(int numero) {
+		this.numero = numero;
+	}
 
 	public Integer getId() {
 		return id;

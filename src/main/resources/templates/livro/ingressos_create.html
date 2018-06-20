@@ -6,6 +6,8 @@
 </head>
 
 <body  >
+
+
 <div>
         <div class="header-blue" style="background-color:#65140f;background-image:url(&quot;none&quot;);">
 <header  th:replace="layout/fragmentos-layout :: barra-navegacao" ></header>
@@ -17,20 +19,16 @@
 						style="float: right">Consultar Lista de Pedidos Realizados</a>
 						
     <div class="contact-clean" style="background-image:url(&quot;assets/img/ingressos-para-eventos-.jpg&quot;);background-size:cover;">
-        <form method="post" th:action="@{/livro/salva}" th:object="${livro}" enctype="multipart/form-data">
+        <form name="form1" method="post" th:action="@{/livro/salva}" th:object="${livro}" enctype="multipart/form-data">
+        
+     <div th:replace="layout/fragmentos-caixaSetores :: caixa-setores" />
+     <div th:replace="layout/fragmentos-caixaSetores :: caixa-setoresFrisa" />
+     <div th:replace="layout/fragmentos-caixaSetores :: caixa-setoresCamarote" />
+     <div th:replace="layout/fragmentos-caixaSetores :: caixa-setoresBalcao" />
+     <div th:replace="layout/fragmentos-caixaSetores :: caixa-setoresGaleria" />
+
         <div th:replace="layout/fragmentos-mensagens :: mensagem-erro-form" />
-<!--             <div class="modal fade" role="dialog" tabindex="-1" id="confirmacao"> -->
-<!--                 <div class="modal-dialog" role="document"> -->
-<!--                     <div class="modal-content"> -->
-<!--                         <div class="modal-header"> -->
-<!--                             <h4 class="modal-title">Venda de Ingresso</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div> -->
-<!--                         <div class="modal-body"> -->
-<!--                             <p>Deseja Confirmar essa solicitação?</p> -->
-<!--                         </div> -->
-<!--                         <div class="modal-footer"><button class="btn btn-light" type="button" data-dismiss="modal">Não</button><button class="btn btn-primary" type="button">Save</button></div> -->
-<!--                     </div> -->
-<!--                 </div> -->
-<!--             </div> -->
+
             <h2 class="text-center">Ingressos</h2>
 <!--             <input  name="id" th:value="${livro.id=''}" /> -->
             
@@ -38,76 +36,688 @@
             <select  th:field="${livro.categorias}" class="form-control" >
             <optgroup label="Evento">
             <option th:if="${categorialivro.id} == ${categorialivros.id}" data-th-each="categorialivros : ${todasCategorias}" th:value="${categorialivros.id}" th:text="${categorialivros.nomeCategoria}"  selected=""></option>          
-
             </optgroup></select></div>
-            
-<!--             <div  class="form-group" th:classappend="${#fields.hasErrors('categorias')} ? 'has-error has-feedback' "> -->
-<!--             <input disabled  name="categorias"  th:value="${livro.categorias}"   th:text="${categorialivro.nomeCategoria}" id="nomeCategoria" class="form-control" type="text"></div> -->
-            
-            <div  class="form-group">
-            <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"></div>
-            
+       
+       
+            <div  class="form-group mb-5">
+            <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"></div>     
             <input type="hidden" name="dataPublicacao" th:value="${{livro.dataPublicacao}}" id="dataPublicacao2"/>
             
-            <div class="form-group"  th:classappend="${#fields.hasErrors('editora')} ? 'has-error has-feedback' ">
-            <select  id="tipoIngresso" th:field="${livro.editora}" class="form-control" onchange="valorFunction()" onClick="valorFunction()" onBlur="valorFunction()">
-            <optgroup label="Tipo">
-            <option data-th-each="editora : ${editoras}"  data-th-value="${editora.id}" data-th-text="${editora.nome}" value="12" selected="" ></option>
-            </optgroup></select></div>
             
-            
-            
-
-          
-            
-                  
-            
-<!--             <div class="input-form-group mb-3"> -->
-<!--     <div class="input-group-prepend " > -->
-<!--     <span class="input-group-text">Valor Inteira R$</span> -->
-<!--     <input disabled  th:value="${categorialivro.inteira}" name="inteira" id="precoTabelado" class="form-control maskmoney-js" type="number" placeholder="Valor"></div> -->
-<!--     </div> -->
+<!--             <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
     
-<!--     <div class="input-form-group mb-3 col-md-14"> -->
-<!--     <div class="input-group-prepend col-md-14" > -->
-<!--     <span class="input-group-text ">Valor Meia R$</span> -->
-<!--     <input disabled th:value="${categorialivro.meia}" name="meia" id="precoTabelado" class="form-control col-md-4 maskmoney-js" type="number" placeholder="Valor"> -->
-<!--     <div class="col-md-1"></div> -->
-<!--     <span class="input-group-text">QTD</span> -->
-<!--     <input onClick="focusFunction()" onBlur="blurFunction()" th:value="${categorialivro.inteira}" name="precoTabelado" id="precoTabelado" class="form-control col-md-2 maskmoney-js" type="number" placeholder="Valor"></div> -->
-<!--     </div> -->
-    
- 
+<!--     <div class="form-row mb-3"> -->
+<!--             <div class="col"  th:classappend="${#fields.hasErrors('editora')} ? 'has-error has-feedback' "> -->
+<!--             <select  id="tipoIngresso" th:field="${livro.editora}" class="form-control" onchange="selecionarValorSetor()" onClick="selecionarValorSetor()" onBlur="selecionarValorSetor()"> -->
+<!--             <optgroup label="Tipo"> -->
+<!--             <option data-th-each="editora : ${editoras}"  data-th-value="${editora.id}" data-th-text="${editora.nome}" value="12" selected="" ></option> -->
+<!--             </optgroup></select></div></div> -->
 
+<div>
+<!-- <div type th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:if="${autorlivro.id} == 1" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
+    
+     <input type="hidden" th:field="${livro.autores}" data-th-each="autorlivro : ${todosAutores}" id=setorV th:value="${autorlivro.id}" th:if="${autorlivro.id} == 1" />
+     <input type="hidden" th:field="${livro.editora}" data-th-each="editora : ${editoras}" id=setorE data-th-value="${editora.id}" th:if="${editora.id} == 1" />
+     
+<!--      <input type="hidden" th:field="${livro.autores}" data-th-each="autorlivro : ${todosAutores}" id=setorVf th:value="${autorlivro.id}" th:if="${autorlivro.id} == 2" /> -->
+<!--      <input type="hidden" th:field="${livro.editora}" data-th-each="editora : ${editoras}" id=setorEf data-th-value="${editora.id}" th:if="${editora.id} == 2" /> -->
+     
+<!--      <input type="hidden" th:field="${livro.autores}" data-th-each="autorlivro : ${todosAutores}" id=setorVc th:value="${autorlivro.id}" th:if="${autorlivro.id} == 3" /> -->
+<!--      <input type="hidden" th:field="${livro.editora}" data-th-each="editora : ${editoras}" id=setorEc data-th-value="${editora.id}" th:if="${editora.id} == 3" /> -->
+     
+<!--      <input type="hidden" th:field="${livro.autores}" data-th-each="autorlivro : ${todosAutores}" id=setorVb th:value="${autorlivro.id}" th:if="${autorlivro.id} == 4" /> -->
+<!--      <input type="hidden" th:field="${livro.editora}" data-th-each="editora : ${editoras}" id=setorEb data-th-value="${editora.id}" th:if="${editora.id} == 4" /> -->
+     
+<!--      <input type="hidden" th:field="${livro.autores}" data-th-each="autorlivro : ${todosAutores}" id=setorVg th:value="${autorlivro.id}" th:if="${autorlivro.id} == 5" /> -->
+<!--      <input type="hidden" th:field="${livro.editora}" data-th-each="editora : ${editoras}" id=setorEg data-th-value="${editora.id}" th:if="${editora.id} == 5" /> -->
+    
+<h3 class="text-center" th:field="${livro.autores}" id="setor" th:if="${autorlivro.id} == 1" data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}">Setor</h3>
+
+<div class="form-group d-inline-flex ">
+<input type="text" value="Inteira" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Meia" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Cortesia" readonly class="form-control-plaintext text-center" />
+<!-- <div class="col"> -->
+<!--             <div class="col"  th:classappend="${#fields.hasErrors('editora')} ? 'has-error has-feedback' "> -->
+<!--             <select  id="tipoIngresso" th:field="${livro.editora}" class="form-control" onchange="selecionarValorSetor()" onClick="selecionarValorSetor()" onBlur="selecionarValorSetor()"> -->
+<!--             <optgroup label="Tipo"> -->
+<!--             <option data-th-each="editora : ${editoras}"  th:if="${editora.id} == 1" data-th-value="${editora.id}" data-th-text="${editora.nome}" value="12" selected="" ></option> -->
+<!--             </optgroup></select></div></div> -->
             
-             
-<!--             <div th:classappend="${#fields.hasErrors('dataPublicacao')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--             <div class="col"> -->
+<!--             <div class="col"  th:classappend="${#fields.hasErrors('editora')} ? 'has-error has-feedback' "> -->
+<!--             <select  id="tipoIngresso" th:field="${livro.editora}" class="form-control" onchange="selecionarValorSetor()" onClick="selecionarValorSetor()" onBlur="selecionarValorSetor()"> -->
+<!--             <optgroup label="Tipo"> -->
+<!--             <option data-th-each="editora : ${editoras}"  th:if="${editora.id} == 2" data-th-value="${editora.id}" data-th-text="${editora.nome}" value="12" selected="" ></option> -->
+<!--             </optgroup></select></div></div> -->
             
+<!--             <div class="col"> -->
+<!--             <div class="col"  th:classappend="${#fields.hasErrors('editora')} ? 'has-error has-feedback' "> -->
+<!--             <select  id="tipoIngresso" th:field="${livro.editora}" class="form-control" onchange="selecionarValorSetor()" onClick="selecionarValorSetor()" onBlur="selecionarValorSetor()"> -->
+<!--             <optgroup label="Tipo"> -->
+<!--             <option data-th-each="editora : ${editoras}"  th:if="${editora.id} == 3" data-th-value="${editora.id}" data-th-text="${editora.nome}" value="12" selected="" ></option> -->
+<!--             </optgroup></select></div></div> -->
+<!-- <input th:field="${livro.editora}" th:if="${editora.id} == 1" data-th-each="editora : ${editoras}"  data-th-value="${editora.id}" data-th-text="${editora.nome}" type="text" value="Inteira" readonly class="form-control-plaintext text-center" /> -->
+<!-- <input th:field="${livro.editora}" th:if="${editora.id} == 2" data-th-each="editora : ${editoras}"  data-th-value="${editora.id}" data-th-text="${editora.nome}" type="text" value="Inteira" readonly class="form-control-plaintext text-center" /> -->
+<!-- <input th:field="${livro.editora}" th:if="${editora.id} == 3" data-th-each="editora : ${editoras}"  data-th-value="${editora.id}" data-th-text="${editora.nome}" type="text" value="Inteira" readonly class="form-control-plaintext text-center" /> -->
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabelado" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+    
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabelado2" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabelado3" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+</div>
+
+
+
+<div class="form-group d-inline-flex">
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.quantidaEmEstoque}" name="quantidaEmEstoque" 
+    onClick="focusFunction()" onBlur="blurFunction()"
+	id="quantidaEmEstoque"class="form-control" type="number"  placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+    
+    
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdmeiaP}" name="qtdmeiaP" 
+    onClick="focusFunction()" onBlur="blurFunction()"
+	id="quantidaEmEstoque2"class="form-control" type="number"  placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdcortesiaP}" name="qtdcortesiaP" 
+    onClick="focusFunction()" onBlur="blurFunction()"
+	id="quantidaEmEstoque3"class="form-control" type="number"  placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <input id=tot class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    
+<div class="col">
+    <input id=tot2 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+
+<div class="col">
+    <input id=tot3 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+</div>
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <input id=tot4 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    <div class="col mb-5">
+	<a class="btn btn-primary" role="button" onclick="verificar()" data-toggle="modal"  data-target="#modals">Selecione os locais Plateia</a>
+	</div>		
+</div>
+</div>
+
+
+<div>
+<!-- <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:if="${autorlivro.id} == 2" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
+<h3 class="text-center" th:field="${livro.autores}" th:if="${autorlivro.id} == 2" data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}">Setor</h3>
+
+<div class="form-group d-inline-flex ">
+<input type="text" value="Inteira" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Meia" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Cortesia" readonly class="form-control-plaintext text-center" />
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladof1" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+    
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladof2" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladof3" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+</div>
+
+
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdinteiraF}" name="qtdinteiraF" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquef1"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+    
+    
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdmeiaF}" name="qtdmeiaF" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquef2"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdcortesiaF}" name="qtdcortesiaF" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquef3"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <input id=totf1 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    
+<div class="col">
+    <input id=totf2 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+
+<div class="col">
+    <input id=totf3 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+</div>
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <input id=totf4 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    <div class="col mb-5">
+	<a class="btn btn-primary" role="button" onclick="verificar2()" data-toggle="modal"  data-target="#modalsf">Selecione os locais Frisa</a>
+	</div>		
+</div>
+</div>
+
+
+<div>
+<!-- <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:if="${autorlivro.id} == 2" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
+<h3 class="text-center" th:field="${livro.autores}" th:if="${autorlivro.id} == 3" data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}">Setor</h3>
+
+<div class="form-group d-inline-flex ">
+<input type="text" value="Inteira" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Meia" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Cortesia" readonly class="form-control-plaintext text-center" />
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladoc1" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+    
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladoc2" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladoc3" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+</div>
+
+
+
+<div class="form-group d-inline-flex">
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdinteiraC}" name="qtdinteiraC" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquec1"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+    
+    
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdmeiaC}" name="qtdmeiaC" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquec2"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdcortesiaC}" name="qtdcortesiaC" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoquec3"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <input id=totc1 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    
+<div class="col">
+    <input id=totc2 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+
+<div class="col">
+    <input id=totc3 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+</div>
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <input id=totc4 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    <div class="col mb-5">
+	<a class="btn btn-primary" role="button" onclick="verificar3()" data-toggle="modal"  data-target="#modalsc">Selecione os locais Camarote</a>
+	</div>		
+</div>
+</div>
+
+
+<div>
+<!-- <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:if="${autorlivro.id} == 2" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
+<h3 class="text-center" th:field="${livro.autores}" th:if="${autorlivro.id} == 4" data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}">Setor</h3>
+
+<div class="form-group d-inline-flex ">
+<input type="text" value="Inteira" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Meia" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Cortesia" readonly class="form-control-plaintext text-center" />
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladob1" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+    
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladob2" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladob3" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+</div>
+
+
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdinteiraB}" name="qtdinteiraB" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueb1"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+    
+    
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdmeiaB}" name="qtdmeiaB" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueb2"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+
+ <div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdcortesiaB}" name="qtdcortesiaB" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueb3"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <input id=totb1 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    
+<div class="col">
+    <input id=totb2 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+
+<div class="col">
+    <input id=totb3 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+</div>
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <input id=totb4 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    <div class="col mb-5">
+	<a class="btn btn-primary" role="button" onclick="verificar4()" data-toggle="modal"  data-target="#modalsb">Selecione os locais Balcao</a>
+	</div>		
+</div>
+</div>
+
+
+<div>
+<!-- <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group"> -->
+<!--     <select th:field="${livro.autores}" class="form-control" id="setor" onchange="selecionarValorSetor()" onBlur="selecionarValorSetor()" onClick="selecionarValorSetor()"> -->
+<!--     <optgroup label="Setor"> -->
+<!--     <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:if="${autorlivro.id} == 2" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option> -->
+<!--     </optgroup></select></div>	 -->
+<h3 class="text-center" th:field="${livro.autores}" th:if="${autorlivro.id} == 5" data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}">Setor</h3>
+
+<div class="form-group d-inline-flex ">
+<input type="text" value="Inteira" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Meia" readonly class="form-control-plaintext text-center" />
+<input type="text" value="Cortesia" readonly class="form-control-plaintext text-center" />
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladog1" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+    
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladog2" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+
+<div class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">$</span>
+    <input th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabeladog3" class="form-control " type="number" placeholder="Valor" readonly></div>
+    </div>
+</div>
+
+
+
+<div class="form-group d-inline-flex">
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdinteiraG}" name="qtdinteiraG" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueg1"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+    
+    
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdmeiaG}" name="qtdmeiaG" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueg2"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+
+ <div  class="col">
+    <div class="input-group-prepend" >
+    <span class="input-group-text">QTD</span>
+    <input th:value="${livro.qtdcortesiaG}" name="qtdcortesiaG" 
+    onClick="focusFunction()" 
+	id="quantidaEmEstoqueg3"class="form-control" type="number" required="" placeholder="Quantidade" min="0" max="100"></div>
+            </div>  
+</div>
+
+<div class="form-group d-inline-flex">
+<div class="col">
+    <input id=totg1 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    
+<div class="col">
+    <input id=totg2 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+
+<div class="col">
+    <input id=totg3 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+</div>
+
+<div class="form-group d-inline-flex">
+ <div class="col">
+    <input id=totg4 class="form-control" type="number" name="name" placeholder="Total" disabled>
+    </div>
+    <div class="col mb-5">
+	<a class="btn btn-primary" role="button" onclick="verificar5()" data-toggle="modal"  data-target="#modalsg">Selecione os locais Galeria</a>
+	</div>		
+</div>
+</div>
+    
+
 
 <input type="hidden" name="origem" th:value="${livro.origem}" value="Ingressos" />
 <input type="hidden" name="titulo" th:value="${livro.titulo}" value="Ingressos" />
 <input type="hidden" name="detalhesImagem3" id="imagemEvento3" />
-<input type="hidden" name="detalhesImagem2" th:value="${categorialivro.detalhesImagem.id}" id="imagemEvento2"/>
 
 
-            
-    <div th:classappend="${#fields.hasErrors('quantidaEmEstoque')} ? 'has-error has-feedback' " class="form-group">
-    <input th:value="${livro.quantidaEmEstoque}" name="quantidaEmEstoque" 
-    onClick="focusFunction()" onBlur="blurFunction()"
-									id="quantidaEmEstoque"class="form-control" type="number" required="" placeholder="Quantidade" min="1" max="1000"></div>
+<!--     <input type="hidden" th:value="${categorialivro.inteira}"  id="precointeira"   /> -->
+<!--     <input type="hidden" th:value="${categorialivro.meia}"  id="precomeia" /> -->
     
+
     
-    <input type="hidden" th:value="${categorialivro.inteira}"  id="precointeira"   />
-    <input type="hidden" th:value="${categorialivro.meia}"  id="precomeia" />
-    
-    <script>
+
+        <div class="form-group">
+        <textarea id="descricao" th:utext="${livro.descricao}" th:value="${livro.descricao}" class="form-control" rows="14" name="descricao" placeholder="Descrição">
+        </textarea></div>
+        
+
+        <div class="form-group">
+        <button type="submit" class="btn btn-primary active" role="button" >SALVAR</button>
+        <a class="btn btn-danger" th:href="@{/}">Cancela</a>
+        </div>
+        
+        
+        
+         <script>
+         var a = document.getElementById('setorV');
+         var a2 = document.getElementById('setorE');
+         
+         a.value = 1;
+         a2.value = 1;
+         
+
 function focusFunction() {
 
+	
 	var a = document.getElementById('tot');
     var b = document.getElementById('quantidaEmEstoque');
     var c = document.getElementById('precoTabelado');
+    
+    var a2 = document.getElementById('tot2');
+    var b2 = document.getElementById('quantidaEmEstoque2');
+    var c2 = document.getElementById('precoTabelado2');
+    
+    var a3 = document.getElementById('tot3');
+    var b3 = document.getElementById('quantidaEmEstoque3');
+    var c3 = document.getElementById('precoTabelado3');
 
+    var a4 = document.getElementById('tot4');
+    
     a.value = b.value * c.value;
+    a2.value = b2.value * c2.value;
+    a3.value = b3.value * c3.value;
+    
+    a4.value = parseInt(a.value) + parseInt(a2.value) + parseInt(a3.value);
+    
+//     var a = document.getElementById('setorV');
+//     var a2 = document.getElementById('setorE');
+    
+//     if(a4.value > 0)
+//     a.value = 1;
+//     else
+//     	a.value = null;
+//     a2.value = 1;
+    
+    
+    var af1 = document.getElementById('totf1');
+    var bf1 = document.getElementById('quantidaEmEstoquef1');
+    var cf1 = document.getElementById('precoTabeladof1');
+    
+    var af2 = document.getElementById('totf2');
+    var bf2 = document.getElementById('quantidaEmEstoquef2');
+    var cf2 = document.getElementById('precoTabeladof2');
+    
+    var af3 = document.getElementById('totf3');
+    var bf3 = document.getElementById('quantidaEmEstoquef3');
+    var cf3 = document.getElementById('precoTabeladof3');
+
+    var af4 = document.getElementById('totf4');   
+    
+    af1.value = bf1.value * cf1.value;
+    af2.value = bf2.value * cf2.value;
+    af3.value = bf3.value * cf3.value;
+    
+    af4.value = parseInt(af1.value) + parseInt(af2.value) + parseInt(af3.value);
+    
+//     var af = document.getElementById('setorVf');
+//     var af2 = document.getElementById('setorEf');
+    
+//     if(a4.value > 0)
+//     af.value = 1;
+//     else
+//     	af.value = null;
+//     af2.value = 1;
+    
+    var ac1 = document.getElementById('totc1');
+    var bc1 = document.getElementById('quantidaEmEstoquec1');
+    var cc1 = document.getElementById('precoTabeladoc1');
+    
+    var ac2 = document.getElementById('totc2');
+    var bc2 = document.getElementById('quantidaEmEstoquec2');
+    var cc2 = document.getElementById('precoTabeladoc2');
+    
+    var ac3 = document.getElementById('totc3');
+    var bc3 = document.getElementById('quantidaEmEstoquec3');
+    var cc3 = document.getElementById('precoTabeladoc3');
+
+    var ac4 = document.getElementById('totc4');   
+    
+    ac1.value = bc1.value * cc1.value;
+    ac2.value = bc2.value * cc2.value;
+    ac3.value = bc3.value * cc3.value;
+    
+    ac4.value = parseInt(ac1.value) + parseInt(ac2.value) + parseInt(ac3.value);
+    
+//     var ac = document.getElementById('setorVc');
+//     var ac2 = document.getElementById('setorEc');
+    
+//     if(a4.value > 0)
+//     ac.value = 1;
+//     else
+//     	ac.value = null;
+//     ac2.value = 1;
+    
+    var ab1 = document.getElementById('totb1');
+    var bb1 = document.getElementById('quantidaEmEstoqueb1');
+    var cb1 = document.getElementById('precoTabeladob1');
+    
+    var ab2 = document.getElementById('totb2');
+    var bb2 = document.getElementById('quantidaEmEstoqueb2');
+    var cb2 = document.getElementById('precoTabeladob2');
+    
+    var ab3 = document.getElementById('totb3');
+    var bb3 = document.getElementById('quantidaEmEstoqueb3');
+    var cb3 = document.getElementById('precoTabeladob3');
+
+    var ab4 = document.getElementById('totb4');   
+    
+    ab1.value = bb1.value * cb1.value;
+    ab2.value = bb2.value * cb2.value;
+    ab3.value = bb3.value * cb3.value;
+    
+    ab4.value = parseInt(ab1.value) + parseInt(ab2.value) + parseInt(ab3.value);
+    
+//     var ab = document.getElementById('setorVb');
+//     var ab2 = document.getElementById('setorEb');
+    
+//     if(ab4.value > 0)
+//     ab.value = 1;
+//     else
+//     	ab.value = null;
+//     ab2.value = 1;
+    
+    
+    var ag1 = document.getElementById('totg1');
+    var bg1 = document.getElementById('quantidaEmEstoqueg1');
+    var cg1 = document.getElementById('precoTabeladog1');
+    
+    var ag2 = document.getElementById('totg2');
+    var bg2 = document.getElementById('quantidaEmEstoqueg2');
+    var cg2 = document.getElementById('precoTabeladog2');
+    
+    var ag3 = document.getElementById('totg3');
+    var bg3 = document.getElementById('quantidaEmEstoqueg3');
+    var cg3 = document.getElementById('precoTabeladog3');
+
+    var ag4 = document.getElementById('totg4');   
+    
+    ag1.value = bg1.value * cg1.value;
+    ag2.value = bg2.value * cg2.value;
+    ag3.value = bg3.value * cg3.value;
+    
+    ag4.value = parseInt(ag1.value) + parseInt(ag2.value) + parseInt(ag3.value);
+    
+//     var ag = document.getElementById('setorVg');
+//     var ag2 = document.getElementById('setorEg');
+    
+//     if(ag4.value > 0)
+//     ag.value = 1;
+//     else
+//     	ag.value = null;
+//     ag2.value = 1;
+    
 }
 
 
@@ -137,75 +747,336 @@ function dataFunction() {
 }
 
 
-function blurFunction() {
+// function blurFunction() {
 
-    var a = document.getElementById('tot');
-    var b = document.getElementById('quantidaEmEstoque');
-    var c = document.getElementById('precoTabelado');
+//     var a = document.getElementById('tot');
+//     var b = document.getElementById('quantidaEmEstoque');
+//     var c = document.getElementById('precoTabelado');
 
-    a.value = b.value * c.value;
-}
+//     a.value = b.value * c.value;
+// }
 
-function valorFunction() {
+// function valorFunction() {
 
 	
-	var a = document.getElementById('precointeira');
-	var b = document.getElementById('precomeia');
-	var c = document.getElementById('precoTabelado');
-	var d = document.getElementById('tipoIngresso');
-	var e = document.getElementById('imagemEvento3');
-	var f = document.getElementById('imagemEvento2');
+// 	var a = document.getElementById('precointeira');
+// 	var b = document.getElementById('precomeia');
+// 	var c = document.getElementById('precoTabelado');
+// 	var d = document.getElementById('tipoIngresso');
+// 	var e = document.getElementById('imagemEvento3');
+// 	var f = document.getElementById('imagemEvento2');
 	
-	e.value = f.value;
+// 	if(f.value =! null)
+// 	e.value = f.value;
 
-	if(d.value == 1){ 
-		c.value = a.value;
-	}else if(d.value == 2){
-		c.value = b.value;	
-	}else{
-		c.value = 0;
+// 	if(d.value == 1){ 
+// 		c.value = a.value;
+// 	}else if(d.value == 2){
+// 		c.value = b.value;	
+// 	}else{
+// 		c.value = 0;
+// 	}
+	
+// 	console.log(a.value);
+// 	console.log(f.value);
+
+// }
+
+
+function verificar() {
+	var qtd = document.getElementById('quantidaEmEstoque');
+	var qtd2 = document.getElementById('quantidaEmEstoque2');
+	var qtd3 = document.getElementById('quantidaEmEstoque3');
+	var CheckMaximo = parseInt(qtd.value) + parseInt(qtd2.value) + parseInt(qtd3.value);
+	var Marcados = 1;
+	var objCheck = document.forms['form1'].elements['plateia'];
+
+	//Percorrendo os checks para ver quantos foram selecionados:
+	for (var iLoop = 0; iLoop<objCheck.length; iLoop++) {
+		//Se o número máximo de checkboxes ainda não tiver sido atingido, continua a verificação:
+		if (Marcados <= CheckMaximo) {
+			if (objCheck[iLoop].checked) {
+				Marcados++;
+			}
+				//Habilitando todos os checkboxes, pois o máximo ainda não foi alcançado.
+				for (var i=0; i<objCheck.length; i++) {
+					objCheck[i].disabled = false;
+				}	
+		//Caso contrário, desabilitar o checkbox;
+		//Nesse caso, é necessário percorrer todas as opções novamente, desabilitando as não checadas;
+		} else {
+			for (var i=0; i<objCheck.length; i++) {
+				if(objCheck[i].checked == false) {
+					objCheck[i].disabled = true;
+				}	
+			}
+		}
+	}
 	}
 	
-	console.log(a.value);
-	console.log(f.value);
+function verificar2() {
+	var qtd = document.getElementById('quantidaEmEstoquef1');
+	var qtd2 = document.getElementById('quantidaEmEstoquef2');
+	var qtd3 = document.getElementById('quantidaEmEstoquef3');
+	var CheckMaximo = parseInt(qtd.value) + parseInt(qtd2.value) + parseInt(qtd3.value);
+	var Marcados = 1;
+	var objCheck = document.forms['form1'].elements['frisa'];
 
-}
+	//Percorrendo os checks para ver quantos foram selecionados:
+	for (var iLoop = 0; iLoop<objCheck.length; iLoop++) {
+		//Se o número máximo de checkboxes ainda não tiver sido atingido, continua a verificação:
+		if (Marcados <= CheckMaximo) {
+			if (objCheck[iLoop].checked) {
+				Marcados++;
+			}
+				//Habilitando todos os checkboxes, pois o máximo ainda não foi alcançado.
+				for (var i=0; i<objCheck.length; i++) {
+					objCheck[i].disabled = false;
+				}	
+		//Caso contrário, desabilitar o checkbox;
+		//Nesse caso, é necessário percorrer todas as opções novamente, desabilitando as não checadas;
+		} else {
+			for (var i=0; i<objCheck.length; i++) {
+				if(objCheck[i].checked == false) {
+					objCheck[i].disabled = true;
+				}	
+			}
+		}
+	}
+	}
+	
+function verificar3() {
+	var qtd = document.getElementById('quantidaEmEstoquec1');
+	var qtd2 = document.getElementById('quantidaEmEstoquec2');
+	var qtd3 = document.getElementById('quantidaEmEstoquec3');
+	var CheckMaximo = parseInt(qtd.value) + parseInt(qtd2.value) + parseInt(qtd3.value);
+	var Marcados = 1;
+	var objCheck = document.forms['form1'].elements['camarote'];
+
+	//Percorrendo os checks para ver quantos foram selecionados:
+	for (var iLoop = 0; iLoop<objCheck.length; iLoop++) {
+		//Se o número máximo de checkboxes ainda não tiver sido atingido, continua a verificação:
+		if (Marcados <= CheckMaximo) {
+			if (objCheck[iLoop].checked) {
+				Marcados++;
+			}
+				//Habilitando todos os checkboxes, pois o máximo ainda não foi alcançado.
+				for (var i=0; i<objCheck.length; i++) {
+					objCheck[i].disabled = false;
+				}	
+		//Caso contrário, desabilitar o checkbox;
+		//Nesse caso, é necessário percorrer todas as opções novamente, desabilitando as não checadas;
+		} else {
+			for (var i=0; i<objCheck.length; i++) {
+				if(objCheck[i].checked == false) {
+					objCheck[i].disabled = true;
+				}	
+			}
+		}
+	}
+	}
+	
+function verificar4() {
+	var qtd = document.getElementById('quantidaEmEstoqueb1');
+	var qtd2 = document.getElementById('quantidaEmEstoqueb2');
+	var qtd3 = document.getElementById('quantidaEmEstoqueb3');
+	var CheckMaximo = parseInt(qtd.value) + parseInt(qtd2.value) + parseInt(qtd3.value);
+	var Marcados = 1;
+	var objCheck = document.forms['form1'].elements['balcao'];
+
+	//Percorrendo os checks para ver quantos foram selecionados:
+	for (var iLoop = 0; iLoop<objCheck.length; iLoop++) {
+		//Se o número máximo de checkboxes ainda não tiver sido atingido, continua a verificação:
+		if (Marcados <= CheckMaximo) {
+			if (objCheck[iLoop].checked) {
+				Marcados++;
+			}
+				//Habilitando todos os checkboxes, pois o máximo ainda não foi alcançado.
+				for (var i=0; i<objCheck.length; i++) {
+					objCheck[i].disabled = false;
+				}	
+		//Caso contrário, desabilitar o checkbox;
+		//Nesse caso, é necessário percorrer todas as opções novamente, desabilitando as não checadas;
+		} else {
+			for (var i=0; i<objCheck.length; i++) {
+				if(objCheck[i].checked == false) {
+					objCheck[i].disabled = true;
+				}	
+			}
+		}
+	}
+	}
+	
+function verificar5() {
+	var qtd = document.getElementById('quantidaEmEstoqueg1');
+	var qtd2 = document.getElementById('quantidaEmEstoqueg2');
+	var qtd3 = document.getElementById('quantidaEmEstoqueg3');
+	var CheckMaximo = parseInt(qtd.value) + parseInt(qtd2.value) + parseInt(qtd3.value);
+	var Marcados = 1;
+	var objCheck = document.forms['form1'].elements['galeria'];
+
+	//Percorrendo os checks para ver quantos foram selecionados:
+	for (var iLoop = 0; iLoop<objCheck.length; iLoop++) {
+		//Se o número máximo de checkboxes ainda não tiver sido atingido, continua a verificação:
+		if (Marcados <= CheckMaximo) {
+			if (objCheck[iLoop].checked) {
+				Marcados++;
+			}
+				//Habilitando todos os checkboxes, pois o máximo ainda não foi alcançado.
+				for (var i=0; i<objCheck.length; i++) {
+					objCheck[i].disabled = false;
+				}	
+		//Caso contrário, desabilitar o checkbox;
+		//Nesse caso, é necessário percorrer todas as opções novamente, desabilitando as não checadas;
+		} else {
+			for (var i=0; i<objCheck.length; i++) {
+				if(objCheck[i].checked == false) {
+					objCheck[i].disabled = true;
+				}	
+			}
+		}
+	}
+	}
+	
 
 </script>
 
-    <div class="input-form-group mb-3">
-    <div class="input-group-prepend" >
-    <span class="input-group-text">R$</span>
-    <input onClick="focusFunction()" onBlur="blurFunction()" th:value="${livro.precoTabelado}" name="precoTabelado" id="precoTabelado" class="form-control maskmoney-js" type="number" placeholder="Valor" readonly="true"></div>
-    </div>
-    
-    
-    <div class="form-group"><input id=tot class="form-control" type="number" name="name" placeholder="Total" disabled></div>
-    
-    <div th:classappend="${#fields.hasErrors('autores')} ? 'has-error has-feedback' " class="form-group">
-    <select th:field="${livro.autores}" class="form-control">
-    <optgroup label="Assento">
-    <option data-th-each="autorlivro : ${todosAutores}" th:value="${autorlivro.id}" th:text="${autorlivro.nomeAutor}" value="12" selected=""></option>
-    </optgroup></select></div>
-    
-    <div class="form-group">
-    <input  id="paginas"
-	th:value="${livro.paginas}" name="paginas" class="form-control" type="number" required="" placeholder="Numero" min="1" max="222"></div>
-    
-        <div th:classappend="${#fields.hasErrors('descricao')} ? 'has-error has-feedback' " class="form-group">
-        <textarea id="descricao" th:utext="${livro.descricao}" th:value="${livro.descricao}" class="form-control" rows="14" name="descricao" placeholder="Descrição">
-        </textarea></div>
-        
+<!-- <input th:value="${cleuton}"></input> -->
 
 
 
+<script th:inline="javascript">
 
+    /*<![CDATA][*/
+    	
+    	var valor = document.getElementById('precoTabelado');
+    	var valor2 = document.getElementById('precoTabelado2');
+    	var valor3 = document.getElementById('precoTabelado3');
+    
+    	var valorIngresso = /*[[${categorialivro.inteira}]]*/;
+    	var valorIngresso2 = /*[[${categorialivro.meia}]]*/;
+    	
+    	valor.value = valorIngresso; 
+    	valor2.value = valorIngresso2; 
+    	valor3.value = 0; 
+    	
+    	var valorf1 = document.getElementById('precoTabeladof1');
+    	var valorf2 = document.getElementById('precoTabeladof2');
+    	var valorf3 = document.getElementById('precoTabeladof3');
+    	
+    	var valorIngressof1 = /*[[${categorialivro.inteiraF}]]*/;
+    	var valorIngressof2 = /*[[${categorialivro.meiaF}]]*/;
+    	
+    	valorf1.value = valorIngressof1; 
+    	valorf2.value = valorIngressof2; 
+    	valorf3.value = 0; 
+    	
+    	var valorc1 = document.getElementById('precoTabeladoc1');
+    	var valorc2 = document.getElementById('precoTabeladoc2');
+    	var valorc3 = document.getElementById('precoTabeladoc3');
+    	
+    	var valorIngressoc1 = /*[[${categorialivro.inteiraC}]]*/;
+    	var valorIngressoc2 = /*[[${categorialivro.meiaC}]]*/;
+    	
+    	valorc1.value = valorIngressoc1; 
+    	valorc2.value = valorIngressoc2; 
+    	valorc3.value = 0; 
+    	
+    	var valorb1 = document.getElementById('precoTabeladob1');
+    	var valorb2 = document.getElementById('precoTabeladob2');
+    	var valorb3 = document.getElementById('precoTabeladob3');
+    	
+    	var valorIngressob1 = /*[[${categorialivro.inteiraB}]]*/;
+    	var valorIngressob2 = /*[[${categorialivro.meiaB}]]*/;
+    	
+    	valorb1.value = valorIngressob1; 
+    	valorb2.value = valorIngressob2; 
+    	valorb3.value = 0; 
+    	
+    	var valorg1 = document.getElementById('precoTabeladog1');
+    	var valorg2 = document.getElementById('precoTabeladog2');
+    	var valorg3 = document.getElementById('precoTabeladog3');
+    	
+    	var valorIngressog1 = /*[[${categorialivro.inteiraG}]]*/;
+    	var valorIngressog2 = /*[[${categorialivro.meiaG}]]*/;
+    	
+    	valorg1.value = valorIngressog1; 
+    	valorg2.value = valorIngressog2; 
+    	valorg3.value = 0; 
+    	
+    	var imagemEventoVenda = document.getElementById('imagemEvento3');
+    	var imagemEvento = /*[[${categorialivro.temCapa()}]]*/
+    	
+    		if(imagemEvento != -1)
+        		imagemEventoVenda.value = imagemEvento;
+    	
+    	function selecionarValorSetor(){
+    	
+    		var setor = document.getElementById('setor');
+    		var tipoIngresso = document.getElementById('tipoIngresso');
+    		var valor = document.getElementById('precoTabelado');
+    		var total = document.getElementById('tot');
+    		var quantidade = document.getElementById('quantidaEmEstoque');
 
-        
-        <div class="form-group">
-        <button type="submit" class="btn btn-primary active" role="button" >SALVAR</button>
-        <a class="btn btn-danger" th:href="@{/}">Cancela</a>
-        </div>
+    		
+    		total.value = 0;
+    		quantidade.value = 0;
+    		
+    		if(setor.value == 1){
+    	        if(tipoIngresso.value == 1) 
+    			   var valorIngresso = /*[[${categorialivro.inteira}]]*/;
+    	        if(tipoIngresso.value == 2) 
+    	           var valorIngresso = /*[[${categorialivro.meia}]]*/;
+    	        if(tipoIngresso.value == 3) 
+     	           var valorIngresso = 0;
+    		}else 
+    			if(setor.value == 2){
+    				if(tipoIngresso.value == 1) 
+    	    			   var valorIngresso = /*[[${categorialivro.inteiraF}]]*/;
+    	    	        if(tipoIngresso.value == 2) 
+    	    	           var valorIngresso = /*[[${categorialivro.meiaF}]]*/;
+    	    	        if(tipoIngresso.value == 3) 
+    	      	           var valorIngresso = 0;
+    	           
+    		}else 
+    			if(setor.value == 3){
+    				if(tipoIngresso.value == 1) 
+    	    			   var valorIngresso = /*[[${categorialivro.inteiraC}]]*/;
+    	    	        if(tipoIngresso.value == 2) 
+    	    	           var valorIngresso = /*[[${categorialivro.meiaC}]]*/;
+    	    	        if(tipoIngresso.value == 3) 
+    	      	           var valorIngresso = 0;
+     	           
+     		}else 
+    			if(setor.value == 4){
+    				if(tipoIngresso.value == 1) 
+    	    			   var valorIngresso = /*[[${categorialivro.inteiraB}]]*/;
+    	    	        if(tipoIngresso.value == 2) 
+    	    	           var valorIngresso = /*[[${categorialivro.meiaB}]]*/;
+    	    	        if(tipoIngresso.value == 3) 
+    	      	           var valorIngresso = 0;
+     	           
+     		}else 
+    			if(setor.value == 5){
+    				if(tipoIngresso.value == 1) 
+    	    			   var valorIngresso = /*[[${categorialivro.inteiraG}]]*/;
+    	    	        if(tipoIngresso.value == 2) 
+    	    	           var valorIngresso = /*[[${categorialivro.meiaG}]]*/;
+    	    	        if(tipoIngresso.value == 3) 
+    	      	           var valorIngresso = 0;
+     	           
+     		}
+    		   		
+    		valor.value = valorIngresso;
+    		console.log(valorIngresso);
+    	    
+    }
+    
+
+    
+    	 /*]]>*/
+
+</script>
         </form>
         </div>
                    </div>
