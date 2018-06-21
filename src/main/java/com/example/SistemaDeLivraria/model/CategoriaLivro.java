@@ -52,15 +52,25 @@ public class CategoriaLivro {
 	
 	private BigDecimal meiaF;
 	
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal inteiraC;
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal meiaC;
 	
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal inteiraB;
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal meiaB;
+	
+	private String horario;
+	
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
 	
 	public BigDecimal getInteiraF() {
 		return inteiraF;
@@ -142,9 +152,9 @@ public class CategoriaLivro {
 		this.meia = meia;
 	}
 
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal inteiraG;
-	@NumberFormat(pattern = "#,##0.00")
+	
 	private BigDecimal meiaG;
 	
 	private String descricao;

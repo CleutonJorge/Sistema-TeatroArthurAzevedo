@@ -130,6 +130,8 @@ public class Livro {
 	private int qtdmeiaG;
 	private int qtdcortesiaG;
 	
+	private String horario;
+	
 
 	@OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
 	private DetalhesImagemLivro detalhesImagem;
@@ -137,6 +139,14 @@ public class Livro {
 	private String fotoPath;
 	
 	
+
+	public String getHorario() {
+		return horario;
+	}
+
+	public void setHorario(String horario) {
+		this.horario = horario;
+	}
 
 	public int getQtdinteiraB() {
 		return qtdinteiraB;

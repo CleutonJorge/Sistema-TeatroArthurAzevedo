@@ -41,10 +41,10 @@
 								</th>
 								<th class="text-left 6">ID</th>
 								<th class="col-sm-1">Capa</th>
-								<th>_____________Evento_______________</th>
-								<th class="text-center col-md-2">Setor</th>
-								<th class="text-right col-md-1">Tipo_Ingresso</th>
-								<th class="text-center col-md-1">Qtd</th>
+								<th>____________________Evento____________________</th>
+								<th class="text-center col-md-2">Data_Venda</th>
+								<th class="text-center col-md-1">Horario</th>
+<!-- 								<th class="text-center col-md-1">Qtd</th> -->
 								<!-- 								<th class="text-center col-md-1">Preço Tabela</th> -->
 								<!-- 								<th class="text-center col-md-1">Preço Sugerido</th> -->
 								<!-- 								<th class="text-center col-md-1">Publicação</th> -->
@@ -72,11 +72,11 @@
 									alt="Foto do Livro" height="60px" /></td>
 
 								
-								<td class="text-left" th:text="${livro.categorias}"></td>
-								<td class="text-center col-md-2" th:text="${livro.autores}"></td>
-								<td class="text-right col-md-1" th:text="${livro.editora}"></td>
-								<td class="text-center col-md-1"
-									th:text="${livro.quantidaEmEstoque}"></td>
+								<td class="text-left" th:text="|${livro.getCategorias().get(0)} - ${livro.getCategorias().get(0).getHorario()}|"></td>
+								<td class="text-center col-md-2" th:text="${{livro.dataPublicacao}}"></td>
+								<td class="text-right col-md-1" th:text="${livro.horario}"></td>
+<!-- 								<td class="text-center col-md-1" -->
+<!-- 									th:text="${livro.quantidaEmEstoque}"></td> -->
 								<!-- 								<td class="text-right col-sm-1" -->
 								<!-- 									th:text="|R$ ${livro.nossoPreco}|"></td> -->
 								<!-- 								<td class="text-right col-sm-1" -->

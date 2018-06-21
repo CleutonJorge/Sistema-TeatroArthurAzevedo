@@ -40,9 +40,24 @@
             <input type="text" name="nomeCategoria" id="nomeCategoria" th:value="${categorialivro.nomeCategoria}"
 			placeholder="Digite o nome do evento" class="form-control" ></div>
 			
-			<div  class="form-group">
-            <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"></div>
+<!-- 			<div  class="form-group"> -->
+<!--             <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"></div> -->
+<!--             <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="time"></div> -->
             
+            <div class="form-group d-inline-flex ">
+<div class="col-md-7">
+<label>Data do Evento</label>
+<div class="input-group-prepend" >
+<input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date">
+</div>
+</div>
+<div class="col-md-6">
+<label>Horario do Evento</label>
+<div class="input-group-prepend" >
+ <input name="horario"  onClick="dataFunction()" onBlur="dataFunction()" th:value="${{categorialivro.horario}}" id="horario" class="form-control" type="time">
+</div>
+</div>
+</div>
             <input type="hidden" name="dataPublicacao" th:value="${{categorialivro.dataPublicacao}}" id="dataPublicacao2"/>
 			
 			<label class=" control-label" for="foto">Defina o valor do Ingresso na Plateia</label>
@@ -141,7 +156,23 @@
         <textarea id="descricao" th:utext="${categorialivro.descricao}" th:value="${categorialivro.descricao}" class="form-control" rows="14" name="descricao" placeholder="Descrição">
         </textarea></div>
 
+<script th:inline="javascript">
+
+    /*<![CDATA][*/
+    	
+    	var data = document.getElementById("dataPublicacao");
+    var data2 = /*[[${categorialivro.dataPublicacao}]]*/;
+    console.log(data2);
+    data.value = data2;
+    	
+    	
+    		 /*]]>*/
+
+</script>
+
     <script>
+    
+    
 function inteiraFunction() {
 
 	var a = document.getElementById('inteira');
@@ -175,6 +206,7 @@ function dataFunction() {
 
 	var a = document.getElementById('dataPublicacao');
 	var b = document.getElementById('dataPublicacao2');
+	console.log(a.value);
 	
 	var po = a;
 	var dataExclusao = po.value;
@@ -207,6 +239,7 @@ function dataFunction() {
 // }
 
 </script>
+
 
    
         

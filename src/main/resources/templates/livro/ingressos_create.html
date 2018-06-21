@@ -32,15 +32,38 @@
             <h2 class="text-center">Ingressos</h2>
 <!--             <input  name="id" th:value="${livro.id=''}" /> -->
             
-              <div   class="form-group" th:classappend="${#fields.hasErrors('categorias')} ? 'has-error has-feedback' ">
-            <select  th:field="${livro.categorias}" class="form-control" >
-            <optgroup label="Evento">
-            <option th:if="${categorialivro.id} == ${categorialivros.id}" data-th-each="categorialivros : ${todasCategorias}" th:value="${categorialivros.id}" th:text="${categorialivros.nomeCategoria}"  selected=""></option>          
-            </optgroup></select></div>
+<!--               <div   class="form-group" th:classappend="${#fields.hasErrors('categorias')} ? 'has-error has-feedback' "> -->
+<!--             <select  th:field="${livro.categorias}" class="form-control" > -->
+<!--             <optgroup label="Evento"> -->
+<!--             <option th:if="${categorialivro.id} == ${categorialivros.id}" data-th-each="categorialivros : ${todasCategorias}" th:value="${categorialivros.id}" th:text="${categorialivros.nomeCategoria}"  selected=""></option>           -->
+<!--             </optgroup></select></div> -->
+            
+            <input type="hidden"  th:value="${livro.categorias}" id="eventotaa" name="categorias" >
        
+             <h3 class="text-center mb-5" th:text="|${categorialivro.nomeCategoria} - ${categorialivro.horario}|">Ingressos</h3>
        
-            <div  class="form-group mb-5">
-            <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"></div>     
+<!--             <div  class="form-group mb-5"> -->
+<!--             <input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date"> -->
+<!--             <input name="horario"  onClick="dataFunction()" onBlur="dataFunction()" th:value="${{livro.horario}}" id="horario" class="form-control" type="time"> -->
+<!--             </div>    -->
+            
+            <div class="form-group d-inline-flex ">
+<div class="col-md-7">
+<label>Data da Venda</label>
+<div class="input-group-prepend" >
+
+<input name="dataPublicacao2"  onClick="dataFunction()" onBlur="dataFunction()" id="dataPublicacao" class="form-control" type="date">
+</div>
+</div>
+<div class="col-md-6">
+<label>Horario da Venda</label>
+<div class="input-group-prepend" >
+ <input name="horario"  onClick="dataFunction()" onBlur="dataFunction()" th:value="${{livro.horario}}" id="horario" class="form-control" type="time">
+</div>
+</div>
+</div>
+            
+            
             <input type="hidden" name="dataPublicacao" th:value="${{livro.dataPublicacao}}" id="dataPublicacao2"/>
             
             
@@ -948,6 +971,15 @@ function verificar5() {
 <script th:inline="javascript">
 
     /*<![CDATA][*/
+    	
+    	var evento = document.getElementById("eventotaa");
+    	var eventoid = /*[[${categorialivro.id}]]*/;
+    	evento.value = eventoid
+    	
+    	var data = document.getElementById("dataPublicacao");
+        var data2 = /*[[${livro.dataPublicacao}]]*/;
+        console.log(data2);
+        data.value = data2;
     	
     	var valor = document.getElementById('precoTabelado');
     	var valor2 = document.getElementById('precoTabelado2');

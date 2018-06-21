@@ -20,23 +20,28 @@
     <div class="features-clean">
         <div class="container">
             <div class="intro">
-                <h2 class="text-center" th:text="${livro.categorias}">Evento : Tirulipa</h2>
+                <h2 class="text-center" th:text="|${livro.getCategorias().get(0)} - ${livro.getCategorias().get(0).getHorario()}|">Evento : Tirulipa</h2>
                 <p class="text-center">Informaçoes da Venda. </p>
             </div>
             
             <div class="row features">
             
-                            <div class="col-sm-8 col-lg-4 item"><i class="fa fa-clock-o icon"></i>
+                            <div class="col-sm-6 col-lg-3 item"><i class="fa fa-clock-o icon"></i>
                     <h3 class="name">Data da Venda</h3>
                     <p class="description" th:text="${{livro.dataPublicacao}}">13 de MAIO - 2018 - 21H DOMINGO</p>
                 </div>
                 
-                                <div class="col-sm-8 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
+                 <div class="col-sm-6 col-lg-3 item"><i class="fa fa-clock-o icon"></i>
+                    <h3 class="name">Horario</h3>
+                    <p class="description" th:text="${{livro.horario}}">13 de MAIO - 2018 - 21H DOMINGO</p>
+                </div>
+                
+                                <div class="col-sm-6 col-lg-3 item"><i class="fa fa-info-circle icon"></i>
                     <h3 class="name">Descrição</h3>
                     <p class="description" th:text="${livro.descricao}">Ingresso comprado no caixa 2 da bilheteria do teatro</p>
                 </div>
                 
-                  <div class="col-sm-8 col-lg-4 item"><i class="fa fa-info-circle icon"></i>
+                  <div class="col-sm-6 col-lg-3 item"><i class="fa fa-info-circle icon"></i>
                     <h3 class="name">Valor Total</h3>
                     <p class="description" th:text="|R$ ${livro.categorias[0].inteira * livro.quantidaEmEstoque + livro.categorias[0].meia * livro.qtdmeiaP +
                     livro.categorias[0].inteiraF * livro.qtdinteiraF + livro.categorias[0].meiaF * livro.qtdmeiaF +
